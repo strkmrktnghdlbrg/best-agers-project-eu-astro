@@ -1,0 +1,220 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import PartnerSlot from "../components/PartnerSlot.astro";
+import { hubs, livePages, pageUrl, allLivePages } from "../data/taxonomy";
+import { site } from "../data/site";
+
+/** Einstiegsseiten fuer die Startseite: die nachfragestaerksten je Hub. */
+const einstiege = hubs.flatMap((hub) =>
+  livePages(hub)
+    .slice()
+    .sort((a, b) => b.vol - a.vol)
+    .slice(0, 2)
+    .map((p) => ({ hub, p }))
+);
+
+const schema = [
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    name: site.name,
+    url: site.url,
+    inLanguage: "de",
+    description: site.description,
+    potentialAction: {
+      "@type": "SearchAction",
+      target: {
+        "@type": "EntryPoint",
+        urlTemplate: `${site.url}/suche/?q={search_term_string}`,
+      },
+      "query-input": "required name=search_term_string",
+    },
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    name: site.name,
+    url: site.url,
+    description: site.description,
+  },
+];
+---
+
+<BaseLayout
+  title="Best Agers: Rente, Pflege, Wohnen und Gesundheit ab 50"
+  description={site.description}
+  canonicalPath="/"
+  schema={schema}
+>
+  <!-- Hero -->
+  <section class="border-b border-ink-200 bg-gradient-to-b from-azure-50 to-white">
+    <div class="container-wide py-14 sm:py-20">
+      <div class="max-w-3xl">
+        <p
+          class="text-sm font-semibold uppercase tracking-wide text-azure-600"
+        >
+          {site.tagline}
+        </p>
+        <h1
+          class="mt-3 font-display text-3xl font-bold text-ink-900 sm:text-5xl"
+        >
+          Die zweite Lebenshälfte gut organisiert
+        </h1>
+        <p class="mt-5 text-lg leading-relaxed text-ink-600">
+          Rentenantrag, Pflegegrad, Treppenlift, Altersvorsorge: die Themen ab
+          50 hängen an Fristen, Anträgen und Beträgen, die kaum jemand parat
+          hat. Wir erklären sie mit aktuellen Zahlen und nennen die Quelle dazu.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-3">
+          <a href="/rente/" class="btn btn-primary">Rente & Ruhestand</a>
+          <a href="/pflege/" class="btn btn-outline">Pflegegrad</a>
+          <a href="/wohnen/" class="btn btn-outline">Barrierefrei wohnen</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hubs -->
+  <section class="container-wide py-14">
+    <h2 class="font-display text-2xl font-bold text-ink-900 sm:text-3xl">
+      Die fünf Themenbereiche
+    </h2>
+    <p class="mt-3 max-w-2xl text-ink-600">
+      Jeder Bereich bündelt die Fragen, die in dieser Lebensphase wirklich
+      gestellt werden – vom ersten Überblick bis zu den Detailfragen.
+    </p>
+    <div class="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+      {
+        hubs.map((hub) => (
+          <a href={`/${hub.slug}/`} class="card card-link min-w-0">
+            <h3 class="font-display text-lg font-bold text-ink-900">
+              {hub.name}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-500">
+              {hub.teaser}
+            </p>
+            <p class="mt-4 text-sm font-semibold text-azure-700">
+              {livePages(hub).length} Ratgeber ansehen
+            </p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Angebots-Slot: rendert erst, wenn ein Partnerprogramm angebunden ist -->
+  <div class="container-narrow">
+    <PartnerSlot topic="startseite" query="Angebote ab 50" />
+  </div>
+
+  <!-- Meistgesuchte Einstiege -->
+  <section class="border-y border-ink-200 bg-ink-50">
+    <div class="container-wide py-14">
+      <h2 class="font-display text-2xl font-bold text-ink-900 sm:text-3xl">
+        Häufig gesucht
+      </h2>
+      <p class="mt-3 max-w-2xl text-ink-600">
+        Die Fragen, die in unseren Themenbereichen am häufigsten gestellt
+        werden.
+      </p>
+      <ul class="mt-8 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+        {
+          einstiege.map(({ hub, p }) => (
+            <li>
+              <a
+                href={pageUrl(hub, p)}
+                class="flex h-full min-w-0 flex-col rounded-xl border border-ink-200 bg-white p-4 transition-colors hover:border-azure-300"
+              >
+                <span class="text-xs font-semibold uppercase tracking-wide text-azure-600">
+                  {hub.name}
+                </span>
+                <span class="mt-1.5 font-display text-base font-bold text-ink-900">
+                  {p.nav}
+                </span>
+                <span class="mt-1 text-sm leading-relaxed text-ink-500">
+                  {p.title}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </section>
+
+  <!-- Ratgeber-Bereich, von der Startseite aus sichtbar -->
+  <section class="container-wide py-14">
+    <div class="flex flex-wrap items-baseline justify-between gap-x-6 gap-y-2">
+      <h2 class="font-display text-2xl font-bold text-ink-900 sm:text-3xl">
+        Aus dem Ratgeber
+      </h2>
+      <a
+        href="/ratgeber/"
+        class="text-sm font-semibold text-azure-700 underline decoration-azure-200 underline-offset-4 hover:decoration-azure-500"
+        >Alle {allLivePages.length} Ratgeber</a
+      >
+    </div>
+    <div class="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+      {
+        allLivePages
+          .slice()
+          .sort((a, b) => b.vol * (1 + b.cpc) - a.vol * (1 + a.cpc))
+          .slice(0, 8)
+          .map((p) => (
+            <a
+              href={`/${p.hub}/${p.slug}/`}
+              class="card card-link min-w-0 text-sm"
+            >
+              <span class="text-xs font-semibold uppercase tracking-wide text-azure-600">
+                {p.hubName}
+              </span>
+              <span class="mt-1.5 block font-display text-base font-bold leading-snug text-ink-900">
+                {p.title}
+              </span>
+            </a>
+          ))
+      }
+    </div>
+  </section>
+
+  <!-- Einordnung, ersetzt die uebliche Selbstlob-Sektion -->
+  <section class="border-t border-ink-200 bg-azure-50/50">
+    <div class="container-narrow py-14">
+      <h2 class="font-display text-2xl font-bold text-ink-900">
+        Wie wir arbeiten
+      </h2>
+      <div class="mt-5 grid gap-5 sm:grid-cols-3">
+        <div>
+          <h3 class="font-display text-base font-bold text-ink-900">
+            Zahlen mit Datum
+          </h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-600">
+            Pflegegeld, Rentenwert und Zuschüsse ändern sich. Jeder Betrag steht
+            hier mit Stand und Quelle, damit Sie ihn prüfen können.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-base font-bold text-ink-900">
+            Keine Beratung im Einzelfall
+          </h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-600">
+            Wir erklären Regeln und Verfahren. Ob sie auf Ihre Situation
+            zutreffen, klärt Ihr Versicherungsträger oder eine Beratungsstelle.
+          </p>
+        </div>
+        <div>
+          <h3 class="font-display text-base font-bold text-ink-900">
+            Werbung bleibt erkennbar
+          </h3>
+          <p class="mt-1.5 text-sm leading-relaxed text-ink-600">
+            Wo wir Provisionen erhalten, steht es an der Stelle selbst. Der
+            redaktionelle Teil wird davon nicht umsortiert.
+          </p>
+        </div>
+      </div>
+      <p class="mt-8">
+        <a href="/ueber-uns/" class="btn btn-outline">Mehr über die Redaktion</a>
+      </p>
+    </div>
+  </section>
+</BaseLayout>

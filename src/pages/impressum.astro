@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Impressum"
+  description="Anbieterkennzeichnung und Kontaktdaten für best-agers-project.eu."
+  canonicalPath="/impressum/"
+  noindex={true}
+>
+  <div class="container-narrow min-w-0 py-10">
+    <h1 class="font-display text-3xl font-bold text-ink-900">Impressum</h1>
+
+    <div class="prose-hx mt-8">
+      <h2>Angaben gemäß § 5 DDG</h2>
+      <p>
+        Webmagics Ltd.<br />
+        Gladstonos 12-14<br />
+        8046 Paphos<br />
+        Republik Zypern
+      </p>
+
+      <h2>Kontakt</h2>
+      <p>
+        E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2>Umsatzsteuer-Identifikationsnummer</h2>
+      <p>
+        Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz:<br />
+        CY10400045Y
+      </p>
+
+      <h2>Handelsregister</h2>
+      <p>
+        Registergericht: Registrar of Companies, Republik Zypern
+      </p>
+
+      <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
+      <p>
+        Webmagics Ltd.<br />
+        Gladstonos 12-14<br />
+        8046 Paphos<br />
+        Republik Zypern
+      </p>
+
+      <h2>EU-Streitschlichtung</h2>
+      <p>
+        Die Europäische Kommission stellt eine Plattform zur
+        Online-Streitbeilegung bereit:{" "}
+        <a
+          href="https://ec.europa.eu/consumers/odr/"
+          rel="nofollow noopener"
+          target="_blank">https://ec.europa.eu/consumers/odr/</a
+        >. Unsere E-Mail-Adresse finden Sie oben im Impressum.
+      </p>
+      <p>
+        Wir sind nicht bereit und nicht verpflichtet, an
+        Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle
+        teilzunehmen.
+      </p>
+
+      <h2>Haftung für Inhalte</h2>
+      <p>
+        Als Diensteanbieter sind wir für eigene Inhalte auf diesen Seiten nach
+        den allgemeinen Gesetzen verantwortlich. Wir sind jedoch nicht
+        verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
+        überwachen oder nach Umständen zu forschen, die auf eine rechtswidrige
+        Tätigkeit hinweisen.
+      </p>
+      <p>
+        Die Inhalte dieser Website dienen der allgemeinen Information. Sie
+        stellen keine Rechts-, Steuer-, Anlage- oder medizinische Beratung im
+        Einzelfall dar. Angaben zu Beträgen, Fristen und Leistungen aus dem
+        Sozialrecht ändern sich regelmäßig; maßgeblich ist stets die Auskunft
+        des zuständigen Trägers.
+      </p>
+
+      <h2>Haftung für Links</h2>
+      <p>
+        Unser Angebot enthält Links zu externen Websites Dritter, auf deren
+        Inhalte wir keinen Einfluss haben. Für die Inhalte der verlinkten Seiten
+        ist stets der jeweilige Anbieter oder Betreiber verantwortlich. Zum
+        Zeitpunkt der Verlinkung waren keine rechtswidrigen Inhalte erkennbar.
+      </p>
+
+      <h2>Urheberrecht</h2>
+      <p>
+        Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen
+        Seiten unterliegen dem deutschen Urheberrecht. Beiträge Dritter sind als
+        solche gekennzeichnet.
+      </p>
+
+      <h2>Hinweis zu Partnerlinks</h2>
+      <p>
+        Diese Website enthält Partnerlinks. Wird über einen solchen Link ein
+        Vertrag geschlossen oder ein Produkt gekauft, erhalten wir eine
+        Provision. Für Sie entstehen dadurch keine Mehrkosten. Werbliche
+        Elemente sind an der jeweiligen Stelle gekennzeichnet.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

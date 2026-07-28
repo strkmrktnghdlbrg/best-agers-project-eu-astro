@@ -1,0 +1,132 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { site } from "../data/site";
+
+/**
+ * Redaktionsvorstellung mit Pseudonymen.
+ * Bewusst KEINE erfundenen Qualifikationen, Titel oder Berufsbezeichnungen:
+ * "Rentenberaterin" oder "Pflegefachkraft" waeren eine Autorschafts-Behauptung,
+ * die wir nicht belegen koennen – bei YMYL-Themen ist das ein echtes Problem.
+ * Stattdessen wird beschrieben, WAS die Redaktion tut, nicht wer sie angeblich ist.
+ */
+const redaktion = [
+  {
+    name: "Redaktion Vorsorge & Rente",
+    kuerzel: "VR",
+    text: "Verfolgt die jaehrlichen Anpassungen bei Rentenwert, Hinzuverdienst und Besteuerung und traegt sie in die Beitraege nach. Arbeitet ausschliesslich mit den Veroeffentlichungen der Deutschen Rentenversicherung und des Bundesministeriums fuer Arbeit und Soziales.",
+  },
+  {
+    name: "Redaktion Pflege & Wohnen",
+    kuerzel: "PW",
+    text: "Wertet die Leistungsbetraege der Pflegeversicherung sowie die Zuschussregeln fuer Umbauten aus und uebersetzt sie in nachvollziehbare Schritte. Quelle sind der Leistungskatalog nach SGB XI und die Auskuenfte der Pflegekassen.",
+  },
+  {
+    name: "Redaktion Gesundheit",
+    kuerzel: "GS",
+    text: "Ordnet haeufige Beschwerden der zweiten Lebenshaelfte ein, ohne Behandlungsempfehlungen auszusprechen. Bezieht sich auf Leitlinien der Fachgesellschaften und die Patienteninformationen des IQWiG.",
+  },
+];
+---
+
+<BaseLayout
+  title="Über uns"
+  description="Wer hinter Best Agers steht, wie die Beiträge entstehen und wie wir mit Beträgen, Quellen und Werbung umgehen."
+  canonicalPath="/ueber-uns/"
+>
+  <div class="container-wide pt-6">
+    <Breadcrumbs items={[{ label: "Über uns" }]} />
+  </div>
+
+  <div class="container-narrow min-w-0 py-8">
+    <h1 class="font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+      Über Best Agers
+    </h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+      Best Agers ist ein redaktionelles Informationsangebot zu den Themen, die
+      ab etwa 50 praktisch werden: Rente, Vorsorge, Pflege, Wohnen und
+      Gesundheit.
+    </p>
+
+    <div class="prose-hx mt-8">
+      <h2>Warum es diese Seite gibt</h2>
+      <p>
+        Die Regeln, die in der zweiten Lebenshälfte greifen, stehen fast alle
+        irgendwo im Sozialgesetzbuch. Nur sind sie dort so formuliert, dass man
+        sie nicht nebenbei versteht. Gleichzeitig hängen an ihnen konkrete
+        Beträge und Fristen: ein Antrag, der zu spät gestellt wird, kostet Geld,
+        ein Umbau, der vor der Bewilligung beginnt, kostet den Zuschuss.
+      </p>
+      <p>
+        Wir übersetzen diese Regeln in normale Sätze und schreiben dazu, woher
+        die Zahl stammt und von wann sie ist. Mehr ist es nicht, und mehr soll
+        es auch nicht sein.
+      </p>
+
+      <h2>Wie die Beiträge entstehen</h2>
+      <p>
+        Jeder Beitrag wird gegen die amtliche Quelle geschrieben, nicht gegen
+        andere Ratgeberseiten. Beträge tragen ein Stand-Datum. Wenn sich eine
+        Regel ändert, etwa zum 1. Januar oder zum 1. Juli, wird der Beitrag
+        angefasst und das Datum aktualisiert.
+      </p>
+      <p>
+        Was wir nicht tun: Einzelfälle beurteilen. Ob Ihnen ein bestimmter
+        Pflegegrad zusteht oder ob sich ein Vertrag für Sie rechnet, hängt an
+        Angaben, die wir nicht kennen. Diese Frage gehört zu Ihrer Pflegekasse,
+        Ihrem Rentenversicherungsträger oder einer unabhängigen
+        Beratungsstelle.
+      </p>
+
+      <h2>Die Redaktion</h2>
+      <p>
+        Die Beiträge entstehen in Redaktionsteams und erscheinen unter dem
+        jeweiligen Ressortnamen. Wir arbeiten bewusst ohne persönliche
+        Autorenprofile: Was zählt, ist die Quelle unter dem Text, nicht ein Name
+        darüber.
+      </p>
+    </div>
+
+    <div class="mt-8 grid gap-4 sm:grid-cols-3">
+      {
+        redaktion.map((r) => (
+          <div class="card min-w-0">
+            <span class="inline-flex h-9 w-9 items-center justify-center rounded-full bg-azure-100 font-display text-sm font-bold text-azure-700">
+              {r.kuerzel}
+            </span>
+            <h3 class="mt-3 font-display text-base font-bold text-ink-900">
+              {r.name}
+            </h3>
+            <p class="mt-2 text-sm leading-relaxed text-ink-500">{r.text}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="prose-hx mt-10">
+      <h2>Wie sich die Seite finanziert</h2>
+      <p>
+        Best Agers finanziert sich über Werbung und über Partnerlinks. Wenn Sie
+        über einen solchen Link einen Vertrag abschließen oder etwas kaufen,
+        erhalten wir eine Provision. Für Sie ändert sich der Preis dadurch
+        nicht.
+      </p>
+      <p>
+        Werbliche Elemente sind an der Stelle gekennzeichnet, an der sie stehen.
+        Die Reihenfolge der redaktionellen Inhalte richtet sich nicht danach,
+        womit sich Geld verdienen lässt. Wo aktuell noch kein Partner
+        angebunden ist, steht auch keine Werbebox.
+      </p>
+
+      <h2>Kontakt und Korrekturen</h2>
+      <p>
+        Wenn Ihnen eine falsche Zahl oder eine überholte Regel auffällt,
+        schreiben Sie uns. Fehler in Beträgen korrigieren wir mit Vorrang.
+      </p>
+      <p>
+        <a href="/kontakt/">Zum Kontaktformular</a> oder direkt an{" "}
+        <a href={`mailto:${site.email}`}>{site.email}</a>.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

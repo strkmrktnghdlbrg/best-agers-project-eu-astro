@@ -1,0 +1,82 @@
+{
+  "key": "heilerde/luvos",
+  "status": 200,
+  "sample": {
+    "asin": "B007Q3OHKI",
+    "detailPageURL": "https://www.amazon.de/dp/B007Q3OHKI?tag=homotox-21&linkCode=osi&th=1&psc=1",
+    "images": {
+      "primary": {
+        "large": {
+          "height": 500,
+          "url": "https://m.media-amazon.com/images/I/51xN80p1hPL._SL500_.jpg",
+          "width": 353
+        }
+      }
+    },
+    "itemInfo": {
+      "byLineInfo": {
+        "brand": {
+          "displayValue": "Luvos",
+          "label": "Brand",
+          "locale": "de_DE"
+        },
+        "manufacturer": {
+          "displayValue": "Heilerde-Gesellschaft Luvos Just GmbH & Co. KG",
+          "label": "Manufacturer",
+          "locale": "de_DE"
+        }
+      },
+      "features": {
+        "displayValues": [
+          "Menge: 750g",
+          "Hilft natürlich gegen Sodbrennen, säurebedingte Magenbeschwerden, Durchfall",
+          "Einziges zugelassenes Arzneimittel mit Heilerde in Deutschland hergestellt"
+        ],
+        "label": "Features",
+        "locale": "de_DE"
+      },
+      "title": {
+        "displayValue": "LUVOS Heilerde ultrafein 750 g",
+        "label": "Title",
+        "locale": "de_DE"
+      }
+    },
+    "offersV2": {
+      "listings": [
+        {
+          "isBuyBoxWinner": true,
+          "price": {
+            "money": {
+              "amount": 16.65,
+              "currency": "EUR",
+              "displayAmount": "16,65 €"
+            },
+            "pricePerUnit": {
+              "amount": 22.2,
+              "currency": "EUR",
+              "displayAmount": "22,20 € / kg"
+            },
+            "savingBasis": {
+              "money": {
+                "amount": 18.56,
+                "currency": "EUR",
+                "displayAmount": "18,56 €"
+              },
+              "savingBasisType": "LIST_PRICE",
+              "savingBasisTypeLabel": "UVP:"
+            },
+            "savings": {
+              "money": {
+                "amount": 1.91,
+                "currency": "EUR",
+                "displayAmount": "1,91 €"
+              },
+              "percentage": 10
+            }
+          },
+          "violatesMAP": false
+        }
+      ]
+    }
+  }
+}

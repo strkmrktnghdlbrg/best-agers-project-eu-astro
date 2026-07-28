@@ -1,0 +1,169 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { hubs, allLivePages } from "../data/taxonomy";
+
+/**
+ * Suche ohne Abhaengigkeiten: der komplette Index wird als JSON ins HTML
+ * geschrieben und clientseitig gefiltert. Bei rund 45 Seiten sind das wenige
+ * Kilobyte – eine Suchbibliothek waere hier mehr Gewicht als Nutzen.
+ */
+const index = allLivePages.map((p) => ({
+  t: p.title,
+  n: p.nav,
+  k: p.kw,
+  h: p.hubName,
+  u: `/${p.hub}/${p.slug}/`,
+}));
+
+// Hubs sind ebenfalls Treffer – wer "Pflege" sucht, will den Hub.
+const hubIndex = hubs.map((h) => ({
+  t: h.title,
+  n: h.name,
+  k: h.kw,
+  h: "Themenbereich",
+  u: `/${h.slug}/`,
+}));
+
+const searchIndex = [...hubIndex, ...index];
+---
+
+<BaseLayout
+  title="Suche"
+  description="Durchsuchen Sie alle Ratgeber von Best Agers zu Rente, Altersvorsorge, Pflegegrad, barrierefreiem Wohnen und Gesundheit ab 50."
+  canonicalPath="/suche/"
+>
+  <div class="container-wide pt-6">
+    <Breadcrumbs items={[{ label: "Suche" }]} />
+  </div>
+
+  <div class="container-narrow py-8">
+    <h1 class="font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+      Suche
+    </h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+      Suchen Sie nach einem Stichwort, etwa „Pflegegrad", „Treppenlift" oder
+      „Riester".
+    </p>
+
+    <form class="mt-8" role="search" id="search-form">
+      <label for="q" class="sr-only">Suchbegriff</label>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <input
+          type="search"
+          id="q"
+          name="q"
+          autocomplete="off"
+          placeholder="Stichwort eingeben"
+          class="min-w-0 flex-1 rounded-full border border-ink-300 px-5 py-3 text-base text-ink-800 outline-none transition-colors focus:border-azure-500"
+        />
+        <button type="submit" class="btn btn-primary">Suchen</button>
+      </div>
+    </form>
+
+    <p id="search-status" class="mt-6 text-sm text-ink-500" role="status"></p>
+    <ul id="search-results" class="mt-4 flex flex-col gap-3"></ul>
+
+    <noscript>
+      <p class="mt-6 rounded-xl border border-warn-200 bg-warn-50 p-4 text-sm text-warn-700">
+        Für die Suche wird JavaScript benötigt. Alle Beiträge finden Sie auch
+        im <a href="/ratgeber/" class="underline">Ratgeber-Überblick</a>.
+      </p>
+    </noscript>
+
+    {/* Suchindex als JSON. set:html steht hier als Direktive auf einem echten
+        <script>-Element – NICHT als eigenes <set:html />-Element, das wuerde
+        den Astro-Parser desynchronisieren. */}
+    <script
+      type="application/json"
+      id="search-index"
+      is:inline
+      set:html={JSON.stringify(searchIndex)}
+    />
+  </div>
+</BaseLayout>
+
+<script>
+  type Row = { t: string; n: string; k: string; h: string; u: string };
+
+  const raw = document.getElementById("search-index")?.textContent ?? "[]";
+  const rows: Row[] = JSON.parse(raw);
+
+  const form = document.getElementById("search-form") as HTMLFormElement | null;
+  const input = document.getElementById("q") as HTMLInputElement | null;
+  const status = document.getElementById("search-status");
+  const list = document.getElementById("search-results");
+
+  const norm = (s: string) =>
+    s
+      .toLowerCase()
+      .replace(/ä/g, "ae")
+      .replace(/ö/g, "oe")
+      .replace(/ü/g, "ue")
+      .replace(/ß/g, "ss");
+
+  const render = (q: string) => {
+    if (!status || !list) return;
+    const query = norm(q.trim());
+    list.innerHTML = "";
+
+    if (query.length < 2) {
+      status.textContent =
+        query.length === 0 ? "" : "Bitte mindestens zwei Zeichen eingeben.";
+      return;
+    }
+
+    const terms = query.split(/\s+/);
+    const hits = rows
+      .map((r) => {
+        const hay = norm(`${r.t} ${r.n} ${r.k} ${r.h}`);
+        // Alle Begriffe muessen vorkommen, sonst kein Treffer.
+        if (!terms.every((t) => hay.includes(t))) return null;
+        // Treffer im Kurzlabel und im Keyword wiegen schwerer als im Fliesstitel.
+        const score =
+          (norm(r.n).includes(query) ? 3 : 0) +
+          (norm(r.k).includes(query) ? 2 : 0) +
+          (norm(r.t).includes(query) ? 1 : 0);
+        return { r, score };
+      })
+      .filter((x): x is { r: Row; score: number } => x !== null)
+      .sort((a, b) => b.score - a.score);
+
+    status.textContent =
+      hits.length === 0
+        ? `Keine Treffer für „${q.trim()}". Versuchen Sie ein allgemeineres Stichwort.`
+        : `${hits.length} ${hits.length === 1 ? "Treffer" : "Treffer"} für „${q.trim()}"`;
+
+    for (const { r } of hits) {
+      const li = document.createElement("li");
+      const a = document.createElement("a");
+      a.href = r.u;
+      a.className =
+        "block rounded-xl border border-ink-200 bg-white p-4 transition-colors hover:border-azure-300";
+      const kicker = document.createElement("span");
+      kicker.className =
+        "text-xs font-semibold uppercase tracking-wide text-azure-600";
+      kicker.textContent = r.h;
+      const title = document.createElement("span");
+      title.className =
+        "mt-1.5 block font-display text-base font-bold text-ink-900";
+      title.textContent = r.t;
+      a.append(kicker, title);
+      li.append(a);
+      list.append(li);
+    }
+  };
+
+  // Direkter Einstieg per /suche/?q=... – auch das Ziel der SearchAction.
+  const initial = new URLSearchParams(location.search).get("q");
+  if (initial && input) {
+    input.value = initial;
+    render(initial);
+  }
+
+  input?.addEventListener("input", () => render(input.value));
+  form?.addEventListener("submit", (e) => {
+    e.preventDefault();
+    render(input?.value ?? "");
+  });
+</script>

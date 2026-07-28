@@ -1,0 +1,56 @@
+---
+import { site } from "../data/site";
+
+/**
+ * Angebots-Slot – vorbereitet, noch ohne Partnerprogramm.
+ *
+ * Aktuell ist KEIN Netzwerk angebunden (site.partnersActive = false), deshalb
+ * rendert der Slot bewusst nichts. Eine sichtbare Platzhalterbox waere fuer
+ * Besucher nur Rauschen, und ein Affiliate-Rahmen ohne Ziel dahinter waere ein
+ * Versprechen ohne Deckung.
+ *
+ * Wenn die Programme kommen (Prioritaet laut Keyword-Recherche: Treppenlift-
+ * Leads, danach Altersvorsorge, danach Pflegehilfsmittel), reicht es,
+ * `partnersActive` auf true zu setzen und die Ziel-URL je `topic` zu ergaenzen.
+ *
+ * WICHTIG beim Befuellen:
+ *  - Links DIREKT auf den Partner setzen. Das Outbound-Gate schreibt sie beim
+ *    Build auf /go/?u=<base64url> um. Niemals selbst /go/ bauen, sonst wird
+ *    doppelt kodiert.
+ *  - Niemals `awc=` oder andere Klick-IDs hardcoden.
+ *  - Kein eigener dataLayer-Push: der vom Gate injizierte Listener feuert
+ *    `affiliate_click` bereits, ein zweiter Push zaehlt doppelt.
+ */
+interface Props {
+  /** Themenschluessel, z.B. "wohnen/treppenlift-kosten". */
+  topic: string;
+  /** Fokus-Keyword der Seite. */
+  query: string;
+  heading?: string;
+}
+const { topic, query, heading } = Astro.props;
+---
+
+{
+  site.partnersActive && (
+    <aside
+      class="my-9 rounded-xl border border-azure-200 bg-azure-50/60 p-5"
+      data-partner-topic={topic}
+    >
+      <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
+        <h2 class="font-display text-lg font-bold text-ink-900">
+          {heading ?? `Angebote zu ${query}`}
+        </h2>
+        <span class="text-xs font-medium uppercase tracking-wide text-ink-400">
+          Anzeige · Partnerlinks
+        </span>
+      </div>
+      <p class="mt-1.5 text-sm leading-relaxed text-ink-500">
+        Angebote zum Thema, ohne Rangfolge und ohne Bewertung durch uns. Über
+        die Links entstehen für Sie keine Mehrkosten; bei einem Abschluss
+        erhalten wir eine Provision.
+      </p>
+      <slot />
+    </aside>
+  )
+}

@@ -1,0 +1,131 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { site } from "../data/site";
+---
+
+<BaseLayout
+  title="Datenschutzerklärung"
+  description="Informationen zur Verarbeitung personenbezogener Daten auf best-agers-project.eu."
+  canonicalPath="/datenschutz/"
+  noindex={true}
+>
+  <div class="container-narrow min-w-0 py-10">
+    <h1 class="font-display text-3xl font-bold text-ink-900">
+      Datenschutzerklärung
+    </h1>
+
+    <div class="prose-hx mt-8">
+      <h2>1. Verantwortlicher</h2>
+      <p>
+        Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />
+        Webmagics Ltd.<br />
+        Gladstonos 12-14<br />
+        8046 Paphos, Republik Zypern<br />
+        E-Mail: <a href={`mailto:${site.email}`}>{site.email}</a>
+      </p>
+
+      <h2>2. Hosting und Server-Logfiles</h2>
+      <p>
+        Diese Website wird bei einem Dienstleister gehostet. Beim Aufruf der
+        Seiten erhebt der Server automatisch Informationen, die Ihr Browser
+        übermittelt: aufgerufene Seite, Datum und Uhrzeit, übertragene
+        Datenmenge, Referrer, Browsertyp und Betriebssystem sowie die
+        IP-Adresse. Diese Daten dienen der technischen Bereitstellung und der
+        Abwehr von Angriffen. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
+        (berechtigtes Interesse an einem stabilen und sicheren Betrieb). Die
+        Logfiles werden nach kurzer Zeit gelöscht.
+      </p>
+
+      <h2>3. Kontaktaufnahme</h2>
+      <p>
+        Wenn Sie uns über das Kontaktformular oder per E-Mail schreiben, werden
+        Ihre Angaben zur Bearbeitung der Anfrage verarbeitet. Rechtsgrundlage
+        ist Art. 6 Abs. 1 lit. b bzw. lit. f DSGVO. Die Daten werden gelöscht,
+        sobald sie für den Zweck nicht mehr erforderlich sind und keine
+        gesetzlichen Aufbewahrungspflichten entgegenstehen.
+      </p>
+      <p>
+        Für den Versand des Kontaktformulars nutzen wir den Dienst Web3Forms
+        (Nexinvent, Indien). Die im Formular eingegebenen Daten werden zur
+        Zustellung an unser Postfach über diesen Dienst verarbeitet. Weitere
+        Informationen:{" "}
+        <a href="https://web3forms.com/privacy" rel="nofollow noopener" target="_blank"
+          >web3forms.com/privacy</a
+        >.
+      </p>
+
+      <h2>4. Google Analytics und Google Tag Manager</h2>
+      <p>
+        Diese Website nutzt Google Analytics 4 und den Google Tag Manager,
+        Dienste der Google Ireland Limited, Gordon House, Barrow Street, Dublin
+        4, Irland. Der Tag Manager selbst setzt keine Cookies zur Analyse, er
+        steuert lediglich die Einbindung weiterer Dienste.
+      </p>
+      <p>
+        Google Analytics verwendet Technologien, die eine Wiedererkennung des
+        Browsers ermöglichen, um die Nutzung der Website auszuwerten. Die
+        IP-Adresse wird dabei gekürzt. Eine Übermittlung in Drittländer,
+        insbesondere in die USA, kann nicht ausgeschlossen werden; Google stützt
+        diese auf Standardvertragsklauseln. Rechtsgrundlage ist Art. 6 Abs. 1
+        lit. f DSGVO, unser berechtigtes Interesse an einer bedarfsgerechten
+        Gestaltung des Angebots.
+      </p>
+      <p>
+        Sie können die Erfassung durch Google Analytics verhindern, indem Sie
+        das Browser-Add-on zur Deaktivierung installieren:{" "}
+        <a
+          href="https://tools.google.com/dlpage/gaoptout"
+          rel="nofollow noopener"
+          target="_blank">tools.google.com/dlpage/gaoptout</a
+        >.
+      </p>
+
+      <h2>5. Google AdSense</h2>
+      <p>
+        Diese Website bindet Google AdSense ein, einen Dienst zur Einbindung von
+        Werbeanzeigen der Google Ireland Limited. AdSense verwendet Cookies und
+        vergleichbare Technologien, um Anzeigen auszuliefern und deren Leistung
+        zu messen.
+      </p>
+      <p>
+        Die Einwilligung für personalisierte Werbung wird von Google selbst über
+        eine eigene Abfrage eingeholt und verwaltet. Sie können Ihre Auswahl
+        jederzeit über diese Abfrage ändern. Ihre Werbeeinstellungen verwalten
+        Sie zudem unter{" "}
+        <a
+          href="https://adssettings.google.com"
+          rel="nofollow noopener"
+          target="_blank">adssettings.google.com</a
+        >.
+      </p>
+
+      <h2>6. Partnerlinks</h2>
+      <p>
+        Diese Website enthält Partnerlinks. Wenn Sie einen solchen Link
+        anklicken, werden Sie zum jeweiligen Anbieter weitergeleitet. Dieser
+        kann dabei Cookies setzen, um einen Abschluss der Vermittlung zuzuordnen.
+        Für die Datenverarbeitung nach dem Klick ist der jeweilige Anbieter
+        verantwortlich; bitte beachten Sie dessen Datenschutzhinweise.
+      </p>
+
+      <h2>7. Ihre Rechte</h2>
+      <p>
+        Sie haben das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16
+        DSGVO), Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art.
+        18 DSGVO) und Datenübertragbarkeit (Art. 20 DSGVO). Sie können einer
+        Verarbeitung auf Grundlage berechtigter Interessen jederzeit
+        widersprechen (Art. 21 DSGVO).
+      </p>
+      <p>
+        Ihnen steht außerdem ein Beschwerderecht bei einer
+        Datenschutz-Aufsichtsbehörde zu.
+      </p>
+
+      <h2>8. Aktualität</h2>
+      <p>
+        Diese Datenschutzerklärung wird angepasst, wenn sich die eingesetzten
+        Dienste oder die Rechtslage ändern.
+      </p>
+    </div>
+  </div>
+</BaseLayout>

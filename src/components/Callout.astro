@@ -1,0 +1,27 @@
+---
+interface Props {
+  /** evidenz = gruen (belegt), hinweis = blau (Kontext), vorsicht = gelb (Risiko) */
+  variant?: "evidenz" | "hinweis" | "vorsicht";
+  title?: string;
+}
+const { variant = "hinweis", title } = Astro.props;
+
+const styles = {
+  evidenz: "border-evid-200 bg-evid-50 text-evid-700",
+  hinweis: "border-azure-200 bg-azure-50 text-azure-800",
+  vorsicht: "border-warn-200 bg-warn-50 text-warn-700",
+}[variant];
+
+const defaultTitle = {
+  evidenz: "Was belegt ist",
+  hinweis: "Zum Einordnen",
+  vorsicht: "Vorsicht",
+}[variant];
+---
+
+<aside class:list={["my-7 rounded-xl border p-5", styles]}>
+  <p class="font-display text-base font-bold">{title ?? defaultTitle}</p>
+  <div class="mt-2 text-[0.95rem] leading-relaxed [&>p+p]:mt-2">
+    <slot />
+  </div>
+</aside>

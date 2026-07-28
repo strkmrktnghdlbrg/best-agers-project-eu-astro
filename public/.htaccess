@@ -1,0 +1,172 @@
+# best-agers-project.eu — Apache/LiteSpeed
+# --------------------------------------------------------------------------
+# Host: A2 Hosting (LiteSpeed, cPanel). LiteSpeed liest .htaccess, anders als
+# Cloudflare Pages — dort waeren die Regeln wirkungslos und muessten in
+# functions/_middleware.js stehen.
+#
+# Die Domain trug nacheinander ZWEI Systeme:
+#   1. DotNetNuke (EU-Interreg-Projekt "Best Agers", bis ca. 2013)
+#      Muster: /BestAgers/.../tabid/<id>/Default.aspx und /Portals/18/*.pdf
+#   2. WordPress (2021 bis 2026), 6 Beitraege, davon 5 geloescht
+#
+# Backlink-Lage (DataForSEO, 28.07.2026): 110 Links / 89 Referring Domains.
+# 100 davon zeigen auf die Startseite, der Rest auf sechs Deeplinks. Die sechs
+# sind unten einzeln aufgefuehrt und gehen NICHT auf 410.
+# --------------------------------------------------------------------------
+
+Options -Indexes
+DirectoryIndex index.html
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # ------------------------------------------------------------------
+  # 1. HTTPS und www erzwingen. WWW ist kanonisch (Bestand aus der
+  #    WordPress-Zeit, alle Canonicals zeigen darauf).
+  #    Reihenfolge beachten: erst Protokoll, dann Host, sonst zwei Hops.
+  # ------------------------------------------------------------------
+  RewriteCond %{HTTPS} !=on
+  RewriteRule ^(.*)$ https://www.best-agers-project.eu/$1 [R=301,L]
+
+  RewriteCond %{HTTP_HOST} !^www\.best-agers-project\.eu$ [NC]
+  RewriteRule ^(.*)$ https://www.best-agers-project.eu/$1 [R=301,L]
+
+  # ------------------------------------------------------------------
+  # 2. Alte Sitemaps aus der WordPress-/Yoast-Zeit
+  #    Wichtig: eine alte Sitemap ueberlebt den Relaunch in der Search
+  #    Console und meldet dann dauerhaft "Google nicht bekannt".
+  # ------------------------------------------------------------------
+  RewriteRule ^sitemap_index\.xml$ /sitemap-index.xml [R=301,L]
+  RewriteRule ^sitemap\.xml$ /sitemap-index.xml [R=301,L]
+  RewriteRule ^(post|page|category|author|post_tag)-sitemap\.xml$ /sitemap-index.xml [R=301,L]
+
+  # ------------------------------------------------------------------
+  # 3. WordPress-Bestand
+  # ------------------------------------------------------------------
+
+  # 3a. ERHALTEN: der Beitrag mit dem Link auf heilstein.de. Kein Redirect,
+  #     die URL bleibt exakt bestehen. Der alte Slug leitet auf den neuen.
+  RewriteRule ^zunaechst-einmal-was-bewirken-heilkristalle/?$ /heilkristalle-was-bewirken/ [R=301,L]
+
+  # 3b. GELOESCHTE Beitraege. Ziel ist jeweils die inhaltlich naechste Seite,
+  #     nicht pauschal die Startseite, soweit es eine gibt.
+  RewriteRule ^personal-training-5-komponenten/?$ /gesundheit/bewegung-ab-50/ [R=301,L]
+  RewriteRule ^eigenes-training-verstehen/?$ /gesundheit/bewegung-ab-50/ [R=301,L]
+  RewriteRule ^das-eigene-training-verstehen/?$ /gesundheit/bewegung-ab-50/ [R=301,L]
+
+  #     Fuer Buchhaltungssoftware, Limited-Gruendung und Abmahnrecht gibt es
+  #     im neuen Portal bewusst kein Pendant. Ziel ist die Startseite.
+  RewriteRule ^unternehmensgruendung-limited-ohne-geld/?$ / [R=301,L]
+  RewriteRule ^schritte-zur-gruendung-eines-unternehmens-limited-mit-fast-keinem-geld/?$ / [R=301,L]
+  RewriteRule ^tipps-auswahl-perfekte-buchhaltungssoftware/?$ / [R=301,L]
+  RewriteRule ^tipps-und-ein-detaillierter-prozess-zur-auswahl-einer-perfekten-buchhaltungssoftware/?$ / [R=301,L]
+  RewriteRule ^waldorf-frommer-verletzung-urheberrecht/?$ / [R=301,L]
+  RewriteRule ^ich-wurde-waldorf-frommer-der-verletzung-des-urheberrechts-beschuldigt/?$ / [R=301,L]
+
+  # 3c. Taxonomien. Die Installation nutzte nacheinander /category/ und /thema/.
+  RewriteRule ^(category|thema)/fitness-training/?$ /gesundheit/ [R=301,L]
+  RewriteRule ^(category|thema)/heilsteine/?$ /heilkristalle-was-bewirken/ [R=301,L]
+  RewriteRule ^(category|thema)/(buchhaltungssoftware|business-setup|waldorf-frommer)/?$ /ratgeber/ [R=301,L]
+  RewriteRule ^(category|thema)/?$ /ratgeber/ [R=301,L]
+
+  # 3d. Autorenarchive und Feeds
+  RewriteRule ^author/.*$ /ueber-uns/ [R=301,L]
+  RewriteRule ^feed/?$ /ratgeber/ [R=301,L]
+  RewriteRule ^comments/feed/?$ /ratgeber/ [R=301,L]
+
+  # 3e. WordPress-Reste, die nur noch Bots interessieren
+  RewriteRule ^wp-json(/.*)?$ - [R=410,L]
+  RewriteRule ^xmlrpc\.php$ - [R=410,L]
+  RewriteRule ^wp-(admin|login|content|includes)(/.*)?$ - [R=410,L]
+
+  # ------------------------------------------------------------------
+  # 4. DotNetNuke-Bestand (EU-Projekt bis ca. 2013)
+  # ------------------------------------------------------------------
+
+  # 4a. Der meistverlinkte Deeplink: /BestAgers/tabid/922/Default.aspx traegt
+  #     fuenf Links, unter anderem von cordis.europa.eu und
+  #     oshwiki.osha.europa.eu. Ziel ist die Startseite, weil er die
+  #     Projektuebersicht war.
+  RewriteRule ^BestAgers/tabid/922(/.*)?$ / [R=301,L]
+
+  # 4b. Themenbereiche des Projekts, thematisch zugeordnet
+  RewriteRule ^Themes/LabourMarketEmployment(/.*)?$ /rente/ [R=301,L]
+  RewriteRule ^Themes/MotivationSkillsEntrepreneurship(/.*)?$ /altersvorsorge/ [R=301,L]
+  RewriteRule ^Themes/CoachesExpertsforBusinesses(/.*)?$ /ratgeber/ [R=301,L]
+  RewriteRule ^Themes/TutorsforStartupsStudentsPupils(/.*)?$ /ratgeber/ [R=301,L]
+  RewriteRule ^Themes(/.*)?$ /ratgeber/ [R=301,L]
+
+  # 4c. Projektstruktur ohne Entsprechung im neuen Portal
+  RewriteRule ^(NewsEvents|NewsPress)(/.*)?$ /ratgeber/ [R=301,L]
+  RewriteRule ^(Partnership|ProjectPartners)(/.*)?$ /ueber-uns/ [R=301,L]
+  RewriteRule ^(Contact|Links|Outputs|Reports)(/.*)?$ /ueber-uns/ [R=301,L]
+  RewriteRule ^BestAgersLighthouses(/.*)?$ / [R=301,L]
+  RewriteRule ^BestAg-ers(/.*)?$ / [R=301,L]
+  RewriteRule ^BestAgers(/.*)?$ / [R=301,L]
+
+  # 4d. PDFs unter /Portals/18/. Die drei mit Backlinks gehen auf die
+  #     thematisch naechste Seite, damit die Linkkraft nicht verfaellt.
+  #     %20 im Pfad muss hier als %2520 geschrieben werden, weil RewriteRule
+  #     gegen die bereits dekodierte URL matcht.
+  RewriteRule ^Portals/18/WP3/Best(%20|\s)Agers_WP3_Costs_and_benefits\.pdf$ /rente/ [R=301,L,NE]
+  RewriteRule ^Portals/18/General_Best(%20|\s)Agers_Final_121008\.pdf$ / [R=301,L,NE]
+  RewriteRule ^Portals/18/Activities/Lithuania_Country(%20|\s)Study\.pdf$ / [R=301,L,NE]
+
+  #     Der Rest der rund 100 Projektdokumente existiert nicht mehr und hat
+  #     im neuen Portal kein Pendant. 410 statt 301: ein Sammelredirect von
+  #     hundert PDFs auf eine HTML-Seite wird als Soft-404 gewertet und
+  #     signalisiert faelschlich, der Inhalt sei umgezogen.
+  RewriteRule ^Portals(/.*)?$ - [R=410,L]
+
+  # 4e. Technische DNN-Reste
+  RewriteRule ^(ScriptResource|WebResource)\.axd$ - [R=410,L]
+  RewriteRule ^(Admin|DesktopModules|Telerik)(/.*)?$ - [R=410,L]
+  RewriteRule ^.*\.aspx$ / [R=301,L]
+
+  # ------------------------------------------------------------------
+  # 5. Sonstiges
+  # ------------------------------------------------------------------
+  RewriteRule ^en/?$ / [R=301,L]
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Fehlerseiten. Die 404 verlinkt breit auf Hubs, Top-Ratgeber und Suche.
+# ----------------------------------------------------------------------
+ErrorDocument 404 /404.html
+ErrorDocument 410 /404.html
+
+# ----------------------------------------------------------------------
+# Kompression
+# ----------------------------------------------------------------------
+<IfModule mod_deflate.c>
+  AddOutputFilterByType DEFLATE text/html text/plain text/css text/xml
+  AddOutputFilterByType DEFLATE application/javascript application/json
+  AddOutputFilterByType DEFLATE application/xml image/svg+xml
+</IfModule>
+
+# ----------------------------------------------------------------------
+# Caching. Die gehashten Assets unter /_astro/ sind unveraenderlich,
+# HTML bleibt kurz, damit Korrekturen an Betraegen schnell durchschlagen.
+# ----------------------------------------------------------------------
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 month"
+  ExpiresByType image/webp "access plus 1 month"
+  ExpiresByType image/jpeg "access plus 1 month"
+  ExpiresByType image/png "access plus 1 month"
+  ExpiresByType font/woff2 "access plus 1 year"
+</IfModule>
+
+<IfModule mod_headers.c>
+  <FilesMatch "\.(woff2|css|js)$">
+    Header set Cache-Control "public, max-age=31536000, immutable"
+  </FilesMatch>
+  Header always set X-Content-Type-Options "nosniff"
+  Header always set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
+
+AddType image/svg+xml .svg
+AddType font/woff2 .woff2

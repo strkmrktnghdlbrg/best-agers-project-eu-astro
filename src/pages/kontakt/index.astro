@@ -1,0 +1,161 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { site } from "../../data/site";
+
+/**
+ * Web3Forms. Ohne Access Key wird das Formular NICHT gerendert – ein Formular,
+ * das beim Absenden ins Leere laeuft, ist schlechter als gar keins. Stattdessen
+ * steht dann der Mailweg da, der in jedem Fall funktioniert.
+ */
+const hasKey = Boolean(site.web3formsKey);
+---
+
+<BaseLayout
+  title="Kontakt"
+  description="Fragen, Hinweise oder Korrekturen zu einem Beitrag: so erreichen Sie die Redaktion von Best Agers."
+  canonicalPath="/kontakt/"
+>
+  <div class="container-wide pt-6">
+    <Breadcrumbs items={[{ label: "Kontakt" }]} />
+  </div>
+
+  <div class="container-narrow min-w-0 py-8">
+    <h1 class="font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+      Kontakt
+    </h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+      Hinweise auf falsche Beträge oder überholte Regeln sind uns besonders
+      willkommen. Wir korrigieren sie mit Vorrang.
+    </p>
+
+    <div
+      class="mt-6 rounded-xl border border-warn-200 bg-warn-50 p-4 text-sm leading-relaxed text-warn-700"
+    >
+      <strong class="font-semibold">Keine Beratung im Einzelfall:</strong> Wir dürfen
+      und können nicht beurteilen, ob Ihnen eine bestimmte Leistung zusteht oder
+      ob sich ein Vertrag für Sie rechnet. Solche Fragen beantwortet Ihre
+      Kranken- oder Pflegekasse, die Deutsche Rentenversicherung oder eine
+      unabhängige Beratungsstelle.
+    </div>
+
+    {
+      hasKey ? (
+        <form
+          action="https://api.web3forms.com/submit"
+          method="POST"
+          class="mt-8 flex flex-col gap-4"
+        >
+          <input type="hidden" name="access_key" value={site.web3formsKey} />
+          <input
+            type="hidden"
+            name="subject"
+            value="Neue Nachricht über best-agers-project.eu"
+          />
+          <input type="hidden" name="from_name" value={site.name} />
+          <input
+            type="hidden"
+            name="redirect"
+            value={new URL("/kontakt/danke/", site.url).href}
+          />
+          {/* Honeypot gegen Bots – fuer Menschen unsichtbar. */}
+          <input
+            type="checkbox"
+            name="botcheck"
+            class="hidden"
+            style="display:none"
+            tabindex="-1"
+            autocomplete="off"
+          />
+
+          <div>
+            <label for="name" class="block text-sm font-semibold text-ink-800">
+              Name
+            </label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              required
+              autocomplete="name"
+              class="mt-1.5 w-full rounded-xl border border-ink-300 px-4 py-3 text-base text-ink-800 outline-none transition-colors focus:border-azure-500"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-semibold text-ink-800">
+              E-Mail
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              required
+              autocomplete="email"
+              class="mt-1.5 w-full rounded-xl border border-ink-300 px-4 py-3 text-base text-ink-800 outline-none transition-colors focus:border-azure-500"
+            />
+          </div>
+
+          <div>
+            <label
+              for="nachricht"
+              class="block text-sm font-semibold text-ink-800"
+            >
+              Ihre Nachricht
+            </label>
+            <textarea
+              id="nachricht"
+              name="nachricht"
+              rows="6"
+              required
+              class="mt-1.5 w-full rounded-xl border border-ink-300 px-4 py-3 text-base text-ink-800 outline-none transition-colors focus:border-azure-500"
+            />
+          </div>
+
+          <label class="flex items-start gap-3 text-sm leading-relaxed text-ink-600">
+            <input
+              type="checkbox"
+              required
+              name="datenschutz"
+              value="einverstanden"
+              class="mt-1 h-4 w-4 shrink-0"
+            />
+            <span>
+              Ich habe die <a
+                href="/datenschutz/"
+                class="text-azure-700 underline underline-offset-4"
+              >
+                Datenschutzerklärung
+              </a>{" "}
+              gelesen und bin damit einverstanden, dass meine Angaben zur
+              Beantwortung der Anfrage verarbeitet werden.
+            </span>
+          </label>
+
+          <div>
+            <button type="submit" class="btn btn-primary">
+              Nachricht senden
+            </button>
+          </div>
+        </form>
+      ) : (
+        <div class="mt-8 rounded-xl border border-ink-200 bg-ink-50 p-5">
+          <h2 class="font-display text-lg font-bold text-ink-900">
+            Schreiben Sie uns per E-Mail
+          </h2>
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-600">
+            Das Kontaktformular wird gerade eingerichtet. Bis dahin erreichen Sie
+            die Redaktion direkt unter{" "}
+            <a
+              href={`mailto:${site.email}`}
+              class="text-azure-700 underline underline-offset-4"
+            >
+              {site.email}
+            </a>
+            .
+          </p>
+        </div>
+      )
+    }
+  </div>
+</BaseLayout>

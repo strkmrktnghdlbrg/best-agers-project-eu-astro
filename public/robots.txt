@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Outbound-Gate: die Weiterleitung auf Partnerziele ist kein Inhalt und
+# soll nicht gecrawlt werden. Verhindert zugleich Bot-Klicks auf Partnerlinks.
+Disallow: /go/
+
+Sitemap: https://www.best-agers-project.eu/sitemap-index.xml

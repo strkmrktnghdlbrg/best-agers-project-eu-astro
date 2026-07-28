@@ -1,0 +1,61 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import { hubs } from "../../data/taxonomy";
+---
+
+<BaseLayout
+  title="Vielen Dank für Ihre Nachricht"
+  description="Ihre Nachricht an die Redaktion von Best Agers ist eingegangen."
+  canonicalPath="/kontakt/danke/"
+  noindex={true}
+>
+  <div class="container-narrow py-16">
+    <span
+      class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-evid-50 text-evid-700"
+      aria-hidden="true"
+    >
+      <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
+        <path
+          d="M5 12.5l4.5 4.5L19 7.5"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"></path>
+      </svg>
+    </span>
+    <h1 class="mt-5 font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+      Vielen Dank, Ihre Nachricht ist angekommen
+    </h1>
+    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+      Wir lesen jede Zuschrift. Hinweise auf falsche Beträge oder überholte
+      Regeln bearbeiten wir zuerst. Eine Antwort kann ein paar Tage dauern.
+    </p>
+
+    <h2 class="mt-12 font-display text-xl font-bold text-ink-900">
+      Weiterlesen
+    </h2>
+    <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+      {
+        hubs.map((hub) => (
+          <li>
+            <a
+              href={`/${hub.slug}/`}
+              class="block h-full rounded-xl border border-ink-200 bg-white p-4 transition-colors hover:border-azure-300"
+            >
+              <span class="font-display text-base font-bold text-ink-900">
+                {hub.name}
+              </span>
+              <span class="mt-1 block text-sm leading-relaxed text-ink-500">
+                {hub.teaser}
+              </span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <p class="mt-8">
+      <a href="/" class="btn btn-outline">Zur Startseite</a>
+    </p>
+  </div>
+</BaseLayout>

@@ -1,0 +1,281 @@
+---
+import { site } from "../data/site";
+import { nav } from "../data/taxonomy";
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => path === href || (href !== "/" && path.startsWith(href));
+---
+
+<header
+  class="sticky top-0 z-40 border-b border-ink-200 bg-white/95 backdrop-blur-sm"
+>
+  <div class="container-wide flex h-16 items-center justify-between gap-4">
+    {/* shrink-0 + nowrap: sonst quetscht die fuenfteilige Navigation den
+        Schriftzug bei 1024 px in zwei Zeilen. */}
+    <a
+      href="/"
+      class="flex shrink-0 items-baseline gap-1.5 whitespace-nowrap"
+      aria-label="Best Agers Startseite"
+    >
+      <span class="font-display text-2xl font-bold text-azure-700">Best Agers</span>
+      <span class="hidden text-xs font-medium text-ink-400 xl:inline"
+        >Das Portal ab 50</span
+      >
+    </a>
+
+    <!-- Desktop-Navigation -->
+    <nav class="hidden min-w-0 lg:block" aria-label="Hauptnavigation">
+      <ul class="flex items-center gap-0.5">
+        {
+          nav.map((item) => (
+            <li class="group relative">
+              <a
+                href={item.href}
+                class:list={[
+                  "inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors xl:px-3.5",
+                  isActive(item.href)
+                    ? "bg-azure-50 text-azure-700"
+                    : "text-ink-600 hover:bg-ink-50 hover:text-ink-900",
+                ]}
+              >
+                {item.label}
+                {item.children && (
+                  <svg
+                    class="h-3 w-3 opacity-50"
+                    viewBox="0 0 12 12"
+                    fill="none"
+                    aria-hidden="true"
+                  >
+                    <path
+                      d="M3 4.5L6 7.5L9 4.5"
+                      stroke="currentColor"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                    />
+                  </svg>
+                )}
+              </a>
+              {item.children && (
+                <div class="invisible absolute left-0 top-full z-50 w-60 pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <ul class="rounded-xl border border-ink-200 bg-white p-2 shadow-xl shadow-azure-900/5">
+                    {item.children.map((child) => (
+                      <li>
+                        <a
+                          href={child.href}
+                          class:list={[
+                            "block rounded-lg px-3 py-2 text-sm transition-colors",
+                            path === child.href
+                              ? "bg-azure-50 font-medium text-azure-700"
+                              : "text-ink-600 hover:bg-ink-50 hover:text-ink-900",
+                          ]}
+                        >
+                          {child.label}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <a
+      href="/suche/"
+      class="ml-auto hidden h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-ink-200 px-3.5 text-sm font-medium text-ink-600 transition-colors hover:border-azure-300 hover:text-azure-700 lg:inline-flex"
+      aria-label="Suche"
+    >
+      <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.7"
+        ></circle>
+        <path
+          d="M13.2 13.2L17 17"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"></path>
+      </svg>
+      Suche
+    </a>
+
+    <!-- Burger -->
+    <button
+      type="button"
+      id="menu-open"
+      class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-ink-200 text-ink-700 lg:hidden"
+      aria-label="Menü öffnen"
+      aria-expanded="false"
+      aria-controls="mobile-drawer"
+    >
+      <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path
+          d="M3 5.5h14M3 10h14M3 14.5h14"
+          stroke="currentColor"
+          stroke-width="1.7"
+          stroke-linecap="round"></path>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<!-- Mobile-Drawer: von rechts, Portfolio-Standard -->
+<div id="mobile-drawer" class="drawer-root lg:hidden" data-open="false">
+  <div class="drawer-backdrop" id="menu-close-backdrop" aria-hidden="true"></div>
+  <div
+    class="drawer-panel"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Navigation"
+  >
+    <div class="flex h-16 items-center justify-between border-b border-ink-200 px-5">
+      <span class="font-display text-lg font-bold text-azure-700">Menü</span>
+      <button
+        type="button"
+        id="menu-close"
+        class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-ink-200 text-ink-700"
+        aria-label="Menü schließen"
+      >
+        <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+          <path
+            d="M5 5l10 10M15 5L5 15"
+            stroke="currentColor"
+            stroke-width="1.7"
+            stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+    <nav class="overflow-y-auto px-3 py-4" aria-label="Mobile Navigation">
+      <ul class="flex flex-col gap-1">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={[
+                  "block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold",
+                  isActive(item.href) ? "bg-azure-50 text-azure-700" : "text-ink-800",
+                ]}
+              >
+                {item.label}
+              </a>
+              {item.children && (
+                <ul class="mb-2 ml-3 mt-1 flex flex-col gap-0.5 border-l border-ink-200 pl-3">
+                  {item.children.map((child) => (
+                    <li>
+                      <a
+                        href={child.href}
+                        class:list={[
+                          "block rounded-lg px-3 py-2 text-sm",
+                          path === child.href
+                            ? "font-medium text-azure-700"
+                            : "text-ink-600",
+                        ]}
+                      >
+                        {child.label}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </li>
+          ))
+        }
+        <li class="mt-2 border-t border-ink-200 pt-2">
+          <a
+            href="/ratgeber/"
+            class="block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold text-ink-800"
+            >Alle Ratgeber</a
+          >
+        </li>
+        <li>
+          <a
+            href="/suche/"
+            class="block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold text-ink-800"
+            >Suche</a
+          >
+        </li>
+        <li>
+          <a
+            href="/kontakt/"
+            class="block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold text-ink-800"
+            >Kontakt</a
+          >
+        </li>
+      </ul>
+      <p class="mt-6 border-t border-ink-200 px-3 pt-4 text-xs leading-relaxed text-ink-400">
+        {site.tagline}. Redaktionelle Information, keine Rechts-, Steuer- oder
+        Anlageberatung.
+      </p>
+    </nav>
+  </div>
+</div>
+
+<style>
+  /* Sichtbarkeit ueber data-open steuern. Scoped Styles gewinnen gegen
+     Utilities, deshalb das Ausblenden hier explizit setzen statt per hidden. */
+  .drawer-root {
+    position: fixed;
+    inset: 0;
+    z-index: 50;
+    pointer-events: none;
+  }
+  .drawer-root[data-open="false"] {
+    visibility: hidden;
+  }
+  .drawer-root[data-open="true"] {
+    visibility: visible;
+    pointer-events: auto;
+  }
+  .drawer-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 63, 110, 0.45);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+  }
+  .drawer-root[data-open="true"] .drawer-backdrop {
+    opacity: 1;
+  }
+  .drawer-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: min(20rem, 86vw);
+    background: #fff;
+    box-shadow: -8px 0 40px rgba(12, 63, 110, 0.18);
+    transform: translateX(100%);
+    transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .drawer-root[data-open="true"] .drawer-panel {
+    transform: translateX(0);
+  }
+  @media (min-width: 1024px) {
+    .drawer-root {
+      display: none;
+    }
+  }
+</style>
+
+<script>
+  const drawer = document.getElementById("mobile-drawer");
+  const openBtn = document.getElementById("menu-open");
+  const closeBtn = document.getElementById("menu-close");
+  const backdrop = document.getElementById("menu-close-backdrop");
+
+  const setOpen = (open: boolean) => {
+    drawer?.setAttribute("data-open", String(open));
+    openBtn?.setAttribute("aria-expanded", String(open));
+    document.body.style.overflow = open ? "hidden" : "";
+  };
+
+  openBtn?.addEventListener("click", () => setOpen(true));
+  closeBtn?.addEventListener("click", () => setOpen(false));
+  backdrop?.addEventListener("click", () => setOpen(false));
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") setOpen(false);
+  });
+</script>
