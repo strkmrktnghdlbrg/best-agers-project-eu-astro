@@ -6,42 +6,44 @@ const path = Astro.url.pathname;
 const isActive = (href: string) => path === href || (href !== "/" && path.startsWith(href));
 ---
 
-<header
-  class="sticky top-0 z-40 border-b border-ink-200 bg-white/95 backdrop-blur-sm"
->
-  <div class="container-wide flex h-16 items-center justify-between gap-4">
-    {/* shrink-0 + nowrap: sonst quetscht die fuenfteilige Navigation den
-        Schriftzug bei 1024 px in zwei Zeilen. */}
+{/* Kein sticky, kein backdrop-blur: die Navigation ist eine einfache
+    Leiste, keine schwebende Ebene. Das System kennt keine Tiefe. */}
+<header class="border-b border-ink bg-white">
+  <div class="container-wide flex h-20 items-center justify-between gap-4">
+    {/* Wortmarke als gelbe Flaeche mit schwarzem Text – die einzige Stelle
+        im Header, an der Gelb auftaucht. shrink-0 + nowrap, sonst quetscht
+        die fuenfteilige Navigation den Schriftzug bei 1024 px um. */}
     <a
       href="/"
-      class="flex shrink-0 items-baseline gap-1.5 whitespace-nowrap"
+      class="flex shrink-0 items-center gap-3 whitespace-nowrap"
       aria-label="Best Agers Startseite"
     >
-      <span class="font-display text-2xl font-bold text-azure-700">Best Agers</span>
-      <span class="hidden text-xs font-medium text-ink-400 xl:inline"
-        >Das Portal ab 50</span
+      <span
+        class="rounded-lg border border-ink bg-yellow px-3 py-1.5 text-xl font-bold tracking-[-0.027em] text-ink"
+        >Best Agers</span
       >
+      <span class="hidden text-caption text-ink xl:inline">Das Portal ab 50</span>
     </a>
 
-    <!-- Desktop-Navigation -->
+    <!-- Desktop-Navigation. Gewicht 400, Hierarchie kommt aus der Groesse. -->
     <nav class="hidden min-w-0 lg:block" aria-label="Hauptnavigation">
-      <ul class="flex items-center gap-0.5">
+      <ul class="flex items-center gap-1">
         {
           nav.map((item) => (
             <li class="group relative">
               <a
                 href={item.href}
                 class:list={[
-                  "inline-flex items-center gap-1 whitespace-nowrap rounded-full px-2.5 py-2 text-sm font-medium transition-colors xl:px-3.5",
+                  "inline-flex items-center gap-1.5 whitespace-nowrap rounded-lg px-2.5 py-2 text-sm transition-colors xl:px-3",
                   isActive(item.href)
-                    ? "bg-azure-50 text-azure-700"
-                    : "text-ink-600 hover:bg-ink-50 hover:text-ink-900",
+                    ? "bg-yellow font-bold text-ink"
+                    : "text-ink hover:bg-warm",
                 ]}
               >
                 {item.label}
                 {item.children && (
                   <svg
-                    class="h-3 w-3 opacity-50"
+                    class="h-3 w-3"
                     viewBox="0 0 12 12"
                     fill="none"
                     aria-hidden="true"
@@ -56,8 +58,8 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
                 )}
               </a>
               {item.children && (
-                <div class="invisible absolute left-0 top-full z-50 w-60 pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
-                  <ul class="rounded-xl border border-ink-200 bg-white p-2 shadow-xl shadow-azure-900/5">
+                <div class="invisible absolute left-0 top-full z-50 w-64 pt-2 opacity-0 transition-all group-hover:visible group-hover:opacity-100 group-focus-within:visible group-focus-within:opacity-100">
+                  <ul class="rounded-lg border border-ink bg-white p-2">
                     {item.children.map((child) => (
                       <li>
                         <a
@@ -65,8 +67,8 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
                           class:list={[
                             "block rounded-lg px-3 py-2 text-sm transition-colors",
                             path === child.href
-                              ? "bg-azure-50 font-medium text-azure-700"
-                              : "text-ink-600 hover:bg-ink-50 hover:text-ink-900",
+                              ? "bg-yellow font-bold text-ink"
+                              : "text-ink hover:bg-warm",
                           ]}
                         >
                           {child.label}
@@ -84,8 +86,7 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
 
     <a
       href="/suche/"
-      class="ml-auto hidden h-10 shrink-0 items-center gap-2 whitespace-nowrap rounded-full border border-ink-200 px-3.5 text-sm font-medium text-ink-600 transition-colors hover:border-azure-300 hover:text-azure-700 lg:inline-flex"
-      aria-label="Suche"
+      class="ml-auto hidden h-11 shrink-0 items-center gap-2 whitespace-nowrap rounded-lg border border-ink px-4 text-sm text-ink transition-colors hover:bg-warm lg:inline-flex"
     >
       <svg class="h-4 w-4" viewBox="0 0 20 20" fill="none" aria-hidden="true">
         <circle cx="9" cy="9" r="5.5" stroke="currentColor" stroke-width="1.7"
@@ -103,7 +104,7 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
     <button
       type="button"
       id="menu-open"
-      class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-ink-200 text-ink-700 lg:hidden"
+      class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-ink bg-yellow text-ink lg:hidden"
       aria-label="Menü öffnen"
       aria-expanded="false"
       aria-controls="mobile-drawer"
@@ -112,7 +113,7 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
         <path
           d="M3 5.5h14M3 10h14M3 14.5h14"
           stroke="currentColor"
-          stroke-width="1.7"
+          stroke-width="1.9"
           stroke-linecap="round"></path>
       </svg>
     </button>
@@ -128,39 +129,39 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
     aria-modal="true"
     aria-label="Navigation"
   >
-    <div class="flex h-16 items-center justify-between border-b border-ink-200 px-5">
-      <span class="font-display text-lg font-bold text-azure-700">Menü</span>
+    <div class="flex h-20 items-center justify-between border-b border-ink px-5">
+      <span class="text-lg font-bold tracking-[-0.027em] text-ink">Menü</span>
       <button
         type="button"
         id="menu-close"
-        class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-ink-200 text-ink-700"
+        class="inline-flex h-11 w-11 items-center justify-center rounded-lg border border-ink bg-yellow text-ink"
         aria-label="Menü schließen"
       >
         <svg class="h-5 w-5" viewBox="0 0 20 20" fill="none" aria-hidden="true">
           <path
             d="M5 5l10 10M15 5L5 15"
             stroke="currentColor"
-            stroke-width="1.7"
+            stroke-width="1.9"
             stroke-linecap="round"></path>
         </svg>
       </button>
     </div>
-    <nav class="overflow-y-auto px-3 py-4" aria-label="Mobile Navigation">
-      <ul class="flex flex-col gap-1">
+    <nav class="overflow-y-auto px-4 py-5" aria-label="Mobile Navigation">
+      <ul class="flex flex-col gap-2">
         {
           nav.map((item) => (
             <li>
               <a
                 href={item.href}
                 class:list={[
-                  "block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold",
-                  isActive(item.href) ? "bg-azure-50 text-azure-700" : "text-ink-800",
+                  "block rounded-lg px-3 py-2.5 text-base font-bold tracking-[-0.027em]",
+                  isActive(item.href) ? "bg-yellow text-ink" : "text-ink",
                 ]}
               >
                 {item.label}
               </a>
               {item.children && (
-                <ul class="mb-2 ml-3 mt-1 flex flex-col gap-0.5 border-l border-ink-200 pl-3">
+                <ul class="mb-2 ml-3 mt-1 flex flex-col border-l border-ink pl-3">
                   {item.children.map((child) => (
                     <li>
                       <a
@@ -168,8 +169,8 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
                         class:list={[
                           "block rounded-lg px-3 py-2 text-sm",
                           path === child.href
-                            ? "font-medium text-azure-700"
-                            : "text-ink-600",
+                            ? "font-bold text-ink"
+                            : "text-ink",
                         ]}
                       >
                         {child.label}
@@ -181,29 +182,29 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
             </li>
           ))
         }
-        <li class="mt-2 border-t border-ink-200 pt-2">
+        <li class="mt-2 border-t border-ink pt-3">
           <a
             href="/ratgeber/"
-            class="block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold text-ink-800"
+            class="block rounded-lg px-3 py-2.5 text-base font-bold tracking-[-0.027em] text-ink"
             >Alle Ratgeber</a
           >
         </li>
         <li>
           <a
             href="/suche/"
-            class="block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold text-ink-800"
+            class="block rounded-lg px-3 py-2.5 text-base font-bold tracking-[-0.027em] text-ink"
             >Suche</a
           >
         </li>
         <li>
           <a
             href="/kontakt/"
-            class="block rounded-lg px-3 py-2.5 text-[0.95rem] font-semibold text-ink-800"
+            class="block rounded-lg px-3 py-2.5 text-base font-bold tracking-[-0.027em] text-ink"
             >Kontakt</a
           >
         </li>
       </ul>
-      <p class="mt-6 border-t border-ink-200 px-3 pt-4 text-xs leading-relaxed text-ink-400">
+      <p class="mt-6 border-t border-ink px-3 pt-4 text-caption text-ink">
         {site.tagline}. Redaktionelle Information, keine Rechts-, Steuer- oder
         Anlageberatung.
       </p>
@@ -230,13 +231,15 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
   .drawer-backdrop {
     position: absolute;
     inset: 0;
-    background: rgba(12, 63, 110, 0.45);
+    background: rgba(17, 17, 17, 0.55);
     opacity: 0;
     transition: opacity 0.25s ease;
   }
   .drawer-root[data-open="true"] .drawer-backdrop {
     opacity: 1;
   }
+  /* Kein box-shadow: das System ist vollstaendig flach. Die Kante zum
+     Hintergrund traegt stattdessen ein 1px schwarzer Rahmen. */
   .drawer-panel {
     position: absolute;
     top: 0;
@@ -244,9 +247,9 @@ const isActive = (href: string) => path === href || (href !== "/" && path.starts
     display: flex;
     flex-direction: column;
     height: 100%;
-    width: min(20rem, 86vw);
+    width: min(21rem, 88vw);
     background: #fff;
-    box-shadow: -8px 0 40px rgba(12, 63, 110, 0.18);
+    border-left: 1px solid #111111;
     transform: translateX(100%);
     transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
   }

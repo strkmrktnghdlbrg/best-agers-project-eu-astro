@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Best Agers">
-  <rect width="64" height="64" rx="14" fill="#026fc7"/>
-  <g fill="#ffffff">
-    <rect x="14" y="37.1" width="8.3" height="12.9" rx="3.5"/>
-    <rect x="27.1" y="28.7" width="8.3" height="21.3" rx="3.5"/>
-    <rect x="40.2" y="20.6" width="8.3" height="29.4" rx="3.5"/>
+  <rect x="0.5" y="0.5" width="63" height="63" rx="8" fill="#ffdb00" stroke="#111111"/>
+  <g fill="#111111">
+    <rect x="14" y="37.1" width="8.3" height="12.9"/>
+    <rect x="27.1" y="28.7" width="8.3" height="21.3"/>
+    <rect x="40.2" y="20.6" width="8.3" height="29.4"/>
   </g>
 </svg>

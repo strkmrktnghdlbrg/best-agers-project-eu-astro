@@ -1,27 +1,39 @@
 ---
+/**
+ * Einordnungs-Box.
+ *
+ * Das System kennt keine Signalfarben-Palette: es gibt genau eine Akzentfarbe,
+ * und die ist der wichtigsten Aktion vorbehalten. Die Varianten unterscheiden
+ * sich deshalb nicht ueber die Flaeche, sondern ueber den linken
+ * Markierungsbalken und das fette Label. Gelb markiert, was man wirklich
+ * lesen muss, sonst bleibt der Balken schwarz.
+ */
 interface Props {
-  /** evidenz = gruen (belegt), hinweis = blau (Kontext), vorsicht = gelb (Risiko) */
+  /** vorsicht = gelber Balken (muss gelesen werden), sonst schwarz */
   variant?: "evidenz" | "hinweis" | "vorsicht";
   title?: string;
 }
 const { variant = "hinweis", title } = Astro.props;
 
-const styles = {
-  evidenz: "border-evid-200 bg-evid-50 text-evid-700",
-  hinweis: "border-azure-200 bg-azure-50 text-azure-800",
-  vorsicht: "border-warn-200 bg-warn-50 text-warn-700",
-}[variant];
+const bar = variant === "vorsicht" ? "border-l-yellow" : "border-l-ink";
 
 const defaultTitle = {
   evidenz: "Was belegt ist",
   hinweis: "Zum Einordnen",
-  vorsicht: "Vorsicht",
+  vorsicht: "Das Wichtigste vorweg",
 }[variant];
 ---
 
-<aside class:list={["my-7 rounded-xl border p-5", styles]}>
-  <p class="font-display text-base font-bold">{title ?? defaultTitle}</p>
-  <div class="mt-2 text-[0.95rem] leading-relaxed [&>p+p]:mt-2">
+<aside
+  class:list={[
+    "my-8 rounded-lg border border-l-8 border-ink bg-warm p-5 text-ink",
+    bar,
+  ]}
+>
+  <p class="text-caption font-bold uppercase tracking-[0.08em]">
+    {title ?? defaultTitle}
+  </p>
+  <div class="mt-3 text-base [&>p+p]:mt-3">
     <slot />
   </div>
 </aside>

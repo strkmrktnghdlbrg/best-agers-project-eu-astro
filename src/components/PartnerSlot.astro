@@ -34,18 +34,18 @@ const { topic, query, heading } = Astro.props;
 {
   site.partnersActive && (
     <aside
-      class="my-9 rounded-xl border border-azure-200 bg-azure-50/60 p-5"
+      class="my-9 rounded-lg border border-ink bg-warm p-5"
       data-partner-topic={topic}
     >
       <div class="flex flex-wrap items-baseline justify-between gap-x-3 gap-y-1">
-        <h2 class="font-display text-lg font-bold text-ink-900">
+        <h2 class="font-display text-lg font-bold text-ink">
           {heading ?? `Angebote zu ${query}`}
         </h2>
-        <span class="text-xs font-medium uppercase tracking-wide text-ink-400">
+        <span class="text-xs font-bold uppercase tracking-wide text-ink">
           Anzeige · Partnerlinks
         </span>
       </div>
-      <p class="mt-1.5 text-sm leading-relaxed text-ink-500">
+      <p class="mt-1.5 text-sm leading-relaxed text-ink">
         Angebote zum Thema, ohne Rangfolge und ohne Bewertung durch uns. Über
         die Links entstehen für Sie keine Mehrkosten; bei einem Abschluss
         erhalten wir eine Provision.

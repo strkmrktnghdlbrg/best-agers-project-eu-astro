@@ -10,19 +10,22 @@ const { items } = Astro.props;
 ---
 
 <nav aria-label="Brotkrumen" class="text-sm">
-  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-ink-400">
-    <li><a href="/" class="hover:text-azure-700">Start</a></li>
+  <ol class="flex flex-wrap items-center gap-x-2 gap-y-1 text-ink">
+    <li><a href="/" class="hover:text-link">Start</a></li>
     {
       items.map((item) => (
         <>
-          <li aria-hidden="true" class="text-ink-300">/</li>
+          {/* Trenner in Ink Black statt Steel Gray. Er ist zwar dekorativ und
+              aria-hidden, aber 3,9:1 ist fuer eine 50-plus-Zielgruppe zu
+              blass, um die Pfadstruktur noch zu erkennen. */}
+          <li aria-hidden="true" class="text-ink">/</li>
           <li>
             {item.href ? (
-              <a href={item.href} class="hover:text-azure-700">
+              <a href={item.href} class="underline decoration-1 underline-offset-4 hover:text-link">
                 {item.label}
               </a>
             ) : (
-              <span class="text-ink-600">{item.label}</span>
+              <span class="font-bold text-ink">{item.label}</span>
             )}
           </li>
         </>

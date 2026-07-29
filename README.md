@@ -47,6 +47,43 @@ Navigation, Suche und Interlinking. Seiten mit `status: "queued"` bekommen
 bewusst **keine** Route: programmatische Dünnseiten mit Ads sind das Muster
 hinter der AdSense-Ablehnung wegen „minderwertiger Inhalte".
 
+## Design-System
+
+Bewusst gegen den Rest des Portfolios gebaut, damit die Seite nicht als
+Schwesterprojekt der anderen Portale lesbar ist. Referenz ist ein flaches
+skandinavisches Flat-Pack-Raster. Drei Regeln tragen alles, sie sind hart:
+
+1. **Zwei Schriftschnitte.** Inter 400 und 700, sonst nichts. Kein 500, kein
+   600, keine Kursive, keine zweite Familie. Hierarchie entsteht über Größe.
+2. **Ein Radius.** 8px auf Karten, Buttons, Inputs, Tabellen. Einzige Ausnahme
+   ist der runde Pfeil-Button, der als Navigations-Affordance eine Kreisform
+   braucht.
+3. **Gelb ist Fläche, keine Dekoration.** `#ffdb00` nie als Rahmen, nie als
+   Textfarbe, nie als Hover-Tint, und nie als Untergrund für Fließtext. Nur
+   ganze CTA-Flächen und Tabellenköpfe.
+
+Null Schatten, null Verläufe auf Flächen. Tiefe entsteht ausschließlich durch
+Flächenkontrast, 1px schwarze Rahmen, Größe und Abstand.
+
+| Token | Wert | Rolle |
+|---|---|---|
+| `--color-yellow` | `#ffdb00` | einzige Akzentfarbe, nur als Fläche |
+| `--color-ink` | `#111111` | Text, Überschriften, alle Rahmen |
+| `--color-warm` | `#fffefb` | ruhige Flächen, minimal wärmer als Weiß |
+| `--color-link` | `#0159a3` | ausschließlich Textlinks, nie Buttons |
+| `--color-steel` | `#818181` | nur Rahmen und Icons |
+
+**Abweichung von der Referenz:** Steel Gray schafft auf Weiß nur 3,5:1. Die
+Vorlage nutzt es für Sekundärtext, das ist bei einer 50-plus-Zielgruppe nicht
+vertretbar. Lesbarer Text ist hier durchgehend Ink Black. Geprüft: alle zehn
+Seitentypen mit null Kontrastfehlern nach WCAG AA.
+
+**Zweite Abweichung:** Die Vorlage ist medienzentriert und lebt von Bildkarten
+mit Gradient-zu-Schwarz-Overlays. Dieses Portal hat keine Fotografie, deshalb
+tragen die textbasierten Muster: gelbe Aktionsflächen, schwarz umrandete
+Flachkarten und harte Typo-Kontraste. Wenn später Bilder dazukommen, gehören
+sie full-bleed in 8px-Karten mit Overlay, nie ohne.
+
 ## Stand
 
 - 59 Seiten, 43 Artikel, rund 26.000 Wörter

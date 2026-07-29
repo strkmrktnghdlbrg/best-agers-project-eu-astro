@@ -16,23 +16,23 @@ const hasKey = Boolean(site.web3formsKey);
   description="Fragen, Hinweise oder Korrekturen zu einem Beitrag: so erreichen Sie die Redaktion von Best Agers."
   canonicalPath="/kontakt/"
 >
-  <div class="container-wide pt-6">
+  <div class="container-narrow pt-8">
     <Breadcrumbs items={[{ label: "Kontakt" }]} />
   </div>
 
   <div class="container-narrow min-w-0 py-8">
-    <h1 class="font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+    <h1 class="font-display text-3xl font-bold text-ink sm:text-4xl">
       Kontakt
     </h1>
-    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+    <p class="mt-4 text-lg leading-relaxed text-ink">
       Hinweise auf falsche Beträge oder überholte Regeln sind uns besonders
       willkommen. Wir korrigieren sie mit Vorrang.
     </p>
 
     <div
-      class="mt-6 rounded-xl border border-warn-200 bg-warn-50 p-4 text-sm leading-relaxed text-warn-700"
+      class="mt-6 rounded-lg border border-ink bg-warm p-4 text-sm leading-relaxed text-ink"
     >
-      <strong class="font-semibold">Keine Beratung im Einzelfall:</strong> Wir dürfen
+      <strong class="font-bold">Keine Beratung im Einzelfall:</strong> Wir dürfen
       und können nicht beurteilen, ob Ihnen eine bestimmte Leistung zusteht oder
       ob sich ein Vertrag für Sie rechnet. Solche Fragen beantwortet Ihre
       Kranken- oder Pflegekasse, die Deutsche Rentenversicherung oder eine
@@ -69,7 +69,7 @@ const hasKey = Boolean(site.web3formsKey);
           />
 
           <div>
-            <label for="name" class="block text-sm font-semibold text-ink-800">
+            <label for="name" class="block text-sm font-bold text-ink">
               Name
             </label>
             <input
@@ -78,12 +78,12 @@ const hasKey = Boolean(site.web3formsKey);
               name="name"
               required
               autocomplete="name"
-              class="mt-1.5 w-full rounded-xl border border-ink-300 px-4 py-3 text-base text-ink-800 outline-none transition-colors focus:border-azure-500"
+              class="mt-1.5 w-full rounded-lg border border-ink px-4 py-3 text-base text-ink outline-none transition-colors focus:border-ink"
             />
           </div>
 
           <div>
-            <label for="email" class="block text-sm font-semibold text-ink-800">
+            <label for="email" class="block text-sm font-bold text-ink">
               E-Mail
             </label>
             <input
@@ -92,14 +92,14 @@ const hasKey = Boolean(site.web3formsKey);
               name="email"
               required
               autocomplete="email"
-              class="mt-1.5 w-full rounded-xl border border-ink-300 px-4 py-3 text-base text-ink-800 outline-none transition-colors focus:border-azure-500"
+              class="mt-1.5 w-full rounded-lg border border-ink px-4 py-3 text-base text-ink outline-none transition-colors focus:border-ink"
             />
           </div>
 
           <div>
             <label
               for="nachricht"
-              class="block text-sm font-semibold text-ink-800"
+              class="block text-sm font-bold text-ink"
             >
               Ihre Nachricht
             </label>
@@ -108,11 +108,11 @@ const hasKey = Boolean(site.web3formsKey);
               name="nachricht"
               rows="6"
               required
-              class="mt-1.5 w-full rounded-xl border border-ink-300 px-4 py-3 text-base text-ink-800 outline-none transition-colors focus:border-azure-500"
+              class="mt-1.5 w-full rounded-lg border border-ink px-4 py-3 text-base text-ink outline-none transition-colors focus:border-ink"
             />
           </div>
 
-          <label class="flex items-start gap-3 text-sm leading-relaxed text-ink-600">
+          <label class="flex items-start gap-3 text-sm leading-relaxed text-ink">
             <input
               type="checkbox"
               required
@@ -123,7 +123,7 @@ const hasKey = Boolean(site.web3formsKey);
             <span>
               Ich habe die <a
                 href="/datenschutz/"
-                class="text-azure-700 underline underline-offset-4"
+                class="text-link underline underline-offset-4"
               >
                 Datenschutzerklärung
               </a>{" "}
@@ -139,16 +139,16 @@ const hasKey = Boolean(site.web3formsKey);
           </div>
         </form>
       ) : (
-        <div class="mt-8 rounded-xl border border-ink-200 bg-ink-50 p-5">
-          <h2 class="font-display text-lg font-bold text-ink-900">
+        <div class="mt-8 rounded-lg border border-ink bg-warm p-5">
+          <h2 class="font-display text-lg font-bold text-ink">
             Schreiben Sie uns per E-Mail
           </h2>
-          <p class="mt-2 text-[0.95rem] leading-relaxed text-ink-600">
+          <p class="mt-2 text-[0.95rem] leading-relaxed text-ink">
             Das Kontaktformular wird gerade eingerichtet. Bis dahin erreichen Sie
             die Redaktion direkt unter{" "}
             <a
               href={`mailto:${site.email}`}
-              class="text-azure-700 underline underline-offset-4"
+              class="text-link underline underline-offset-4"
             >
               {site.email}
             </a>

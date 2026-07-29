@@ -4,58 +4,59 @@
    Ohne @source generiert Tailwind 4 GAR KEINE Utilities (CSS ~5 KB statt ~35 KB). */
 @source "../**/*.{astro,html,js,jsx,ts,tsx,md,mdx}";
 
-/* Self-hosted Fonts – lokal ausgeliefert, kein Google-CDN, kein externer Request.
-   Bewusst nur die Subsets latin + latin-ext: die Vollimporte ziehen zusaetzlich
-   cyrillic, greek und vietnamese und blaehen den Build auf 80 woff2-Dateien.
-   Deutsch braucht latin (+ latin-ext fuer Anfuehrungszeichen und Sonderzeichen). */
+/* ==========================================================================
+   Design-System: flaches skandinavisches Flat-Pack-Raster
+   --------------------------------------------------------------------------
+   Drei Regeln tragen das ganze System, sie sind bewusst hart:
+
+   1. ZWEI Schriftschnitte, 400 und 700. Kein 500, kein 600, keine Kursive.
+      Hierarchie entsteht ueber Groesse, nicht ueber Gewicht.
+   2. EIN Radius: 8px. Karten, Buttons, Inputs, Bilder. Einzige Ausnahme ist
+      der runde Pfeil-Button, der als Navigations-Affordance eine Kreisform
+      braucht.
+   3. Gelb ist Flaeche, keine Dekoration. Nie Rahmen, nie Textfarbe, nie
+      Hover-Tint. Nur ganze CTA-Flaechen, und nie als Untergrund fuer
+      Fliesstext.
+
+   Null Schatten, null Verlaeufe auf Flaechen. Tiefe entsteht ausschliesslich
+   durch Flaechenkontrast, Groesse und Abstand.
+   ========================================================================== */
+
+/* Self-hosted Fonts – lokal ausgeliefert, kein Google-CDN.
+   Bewusst NUR 400 und 700: das binaere Gewichtssystem ist die Kernregel.
+   Nur Subsets latin + latin-ext, alles andere blaeht den Build auf. */
 @import "@fontsource/inter/latin-400.css";
-@import "@fontsource/inter/latin-500.css";
-@import "@fontsource/inter/latin-600.css";
 @import "@fontsource/inter/latin-700.css";
 @import "@fontsource/inter/latin-ext-400.css";
 @import "@fontsource/inter/latin-ext-700.css";
-@import "@fontsource/source-serif-4/latin-600.css";
-@import "@fontsource/source-serif-4/latin-700.css";
 
 @theme {
-  /* Helles Blau – Hauptskala (Vertrauen, Klarheit, Health) */
-  --color-azure-50: #f0f7ff;
-  --color-azure-100: #e0effe;
-  --color-azure-200: #bae0fd;
-  --color-azure-300: #7dc8fc;
-  --color-azure-400: #38aaf8;
-  --color-azure-500: #0e8de9;
-  --color-azure-600: #026fc7;
-  --color-azure-700: #0359a1;
-  --color-azure-800: #074b85;
-  --color-azure-900: #0c3f6e;
+  /* ---------- Farben: genau fuenf ---------- */
+  --color-yellow: #ffdb00; /* einzige Akzentfarbe, nur als Flaeche */
+  --color-ink: #111111; /* Text, Ueberschriften, Rahmen */
+  --color-warm: #fffefb; /* minimal waermer als Weiss, bricht die Kaelte */
+  --color-steel: #818181; /* NUR Rahmen, Icons, Deaktiviertes.
+                             Auf Weiss nur 3,5:1 – nie fuer Lesetext. */
+  --color-link: #0159a3; /* ausschliesslich Textlinks, nie Buttons */
 
-  /* Neutrale Text-/Flaechenskala (leicht blaustichig, passt zur Hauptskala) */
-  --color-ink-50: #f8fafc;
-  --color-ink-100: #f1f5f9;
-  --color-ink-200: #e6ebf1;
-  --color-ink-300: #cbd5e1;
-  --color-ink-400: #94a3b8;
-  --color-ink-500: #64748b;
-  --color-ink-600: #475569;
-  --color-ink-700: #334155;
-  --color-ink-800: #1e293b;
-  --color-ink-900: #0f172a;
+  /* ---------- Typografie ----------
+     Eine Familie. --font-display zeigt bewusst auf dieselbe Schrift: das
+     System kennt keine zweite, der Token bleibt nur als Alias bestehen. */
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-display: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
 
-  /* Signalfarben – Hinweisboxen */
-  --color-warn-50: #fffbeb;
-  --color-warn-200: #fde68a;
-  --color-warn-700: #a16207;
-  --color-evid-50: #f0fdf4;
-  --color-evid-200: #bbf7d0;
-  --color-evid-700: #15803d;
+  --text-caption: 0.8125rem; /* 13px */
+  --text-body: 1rem; /* 16px */
+  --text-subheading: 1.25rem; /* 20px */
+  --text-heading: 2.25rem; /* 36px */
+  --text-display: 3.1875rem; /* 51px */
 
-  --font-sans: "Inter", ui-sans-serif, system-ui, "Segoe UI", sans-serif;
-  --font-display: "Source Serif 4", Georgia, "Times New Roman", serif;
-
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  /* ---------- Radius: genau einer ---------- */
+  --radius-lg: 8px;
+  --radius-xl: 8px;
+  --radius-2xl: 8px;
 
   /* Kompletter Breakpoint-Satz aufsteigend – sonst sortiert Tailwind 4
      ueberschriebene Breakpoints ans Ende und die Media-Queries kollidieren. */
@@ -64,6 +65,23 @@
   --breakpoint-lg: 1024px;
   --breakpoint-xl: 1280px;
   --breakpoint-2xl: 1536px;
+}
+
+/* Runtime-Vars zusaetzlich in :root. Tailwind 4 prunt @theme-Variablen, zu
+   denen keine Utility im Markup steht – das handgeschriebene CSS unten liefe
+   sonst still auf ungueltige var(). */
+:root {
+  --color-yellow: #ffdb00;
+  --color-ink: #111111;
+  --color-warm: #fffefb;
+  --color-steel: #818181;
+  --color-link: #0159a3;
+  --text-caption: 0.8125rem;
+  --text-body: 1rem;
+  --text-subheading: 1.25rem;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI",
+    Roboto, sans-serif;
+  --font-display: var(--font-sans);
 }
 
 /* Basis-Styles MUESSEN in @layer base stehen – ungelayerte Regeln gewinnen
@@ -79,20 +97,46 @@
   }
   body {
     font-family: var(--font-sans);
-    color: var(--color-ink-700);
+    font-weight: 400;
+    font-size: var(--text-body);
+    line-height: 1.57; /* grosszuegig, nicht eng – das ist Absicht */
+    color: var(--color-ink);
     background: #ffffff;
-    line-height: 1.7;
   }
+
+  /* Alle Ueberschriften 700, nie etwas dazwischen.
+     Negatives Tracking waechst mit der Groesse: das gibt dem Displaytext die
+     kompakte, gebaute Anmutung und ist strukturell, nicht dekorativ. */
   h1,
   h2,
   h3,
-  h4 {
+  h4,
+  h5,
+  h6 {
     font-family: var(--font-display);
     font-weight: 700;
-    color: var(--color-ink-900);
-    line-height: 1.24;
-    letter-spacing: -0.005em;
+    color: var(--color-ink);
   }
+  h1 {
+    font-size: clamp(2.125rem, 1.35rem + 3.4vw, 3.1875rem);
+    line-height: 1;
+    letter-spacing: -0.029em;
+  }
+  h2 {
+    font-size: clamp(1.75rem, 1.35rem + 1.8vw, 2.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.027em;
+  }
+  h3 {
+    font-size: 1.25rem;
+    line-height: 1.2;
+    letter-spacing: -0.027em;
+  }
+  h4 {
+    font-size: 1rem;
+    line-height: 1.3;
+  }
+
   a {
     color: inherit;
     text-decoration: none;
@@ -100,98 +144,178 @@
   img {
     max-width: 100%;
   }
+
+  input,
+  textarea,
+  select,
+  button {
+    font: inherit;
+  }
+  ::placeholder {
+    color: var(--color-steel);
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-link);
+    outline-offset: 2px;
+  }
 }
 
 @layer components {
+  /* ---------- Container ---------- */
   .container-wide {
     margin-inline: auto;
-    max-width: 76rem;
-    padding-inline: 1rem;
+    max-width: 1440px;
+    padding-inline: 16px;
   }
   .container-narrow {
     margin-inline: auto;
-    max-width: 48rem;
-    padding-inline: 1rem;
+    max-width: 46rem; /* Lesespalte, nicht die volle Seitenbreite */
+    padding-inline: 16px;
   }
   @media (min-width: 640px) {
     .container-wide,
     .container-narrow {
-      padding-inline: 1.5rem;
+      padding-inline: 24px;
     }
   }
 
-  /* ---------- Buttons ---------- */
+  /* ---------- Buttons ----------
+     Gelb = primaere Aktion als volle Flaeche mit schwarzem Text.
+     Weiss mit schwarzem Rahmen = sekundaer. Blau ist NIE ein Button. */
   .btn {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 0.5rem;
-    border-radius: 9999px;
-    padding: 0.78rem 1.5rem;
-    font-weight: 600;
-    font-size: 0.95rem;
-    transition: all 0.18s ease;
+    gap: 12px;
+    border-radius: 8px;
+    padding: 14px 24px;
+    font-weight: 700;
+    font-size: 1rem;
+    line-height: 1.2;
+    letter-spacing: -0.01em;
     cursor: pointer;
-    border: 2px solid transparent;
+    border: 1px solid transparent;
     text-align: center;
+    transition:
+      background-color 0.15s ease,
+      border-color 0.15s ease,
+      color 0.15s ease;
   }
   .btn-primary {
-    background: var(--color-azure-600);
-    color: #fff;
+    background: var(--color-yellow);
+    color: var(--color-ink);
+    border-color: var(--color-ink);
   }
   .btn-primary:hover {
-    background: var(--color-azure-700);
+    background: #f0cf00;
   }
   .btn-outline {
-    background: #fff;
-    color: var(--color-azure-700);
-    border-color: var(--color-azure-200);
+    background: #ffffff;
+    color: var(--color-ink);
+    border-color: var(--color-ink);
   }
   .btn-outline:hover {
-    background: var(--color-azure-50);
-    border-color: var(--color-azure-400);
+    background: var(--color-ink);
+    color: #ffffff;
   }
 
-  /* ---------- Karten ---------- */
+  /* Der runde Pfeil-Button. Einzige Kreisform im System, bedeutet immer
+     "dorthin navigieren". */
+  .btn-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    flex: none;
+    border-radius: 9999px;
+    background: var(--color-ink);
+    color: #ffffff;
+    transition: transform 0.15s ease;
+  }
+  a:hover .btn-arrow,
+  .btn-arrow:hover {
+    transform: translateX(3px);
+  }
+
+  /* ---------- Karten ----------
+     Flach, 1px schwarzer Rahmen, 8px Radius, kein Schatten. Der Rahmen
+     traegt die Struktur, die sonst ein Schatten uebernehmen wuerde. */
   .card {
-    background: #fff;
-    border: 1px solid var(--color-ink-200);
-    border-radius: var(--radius-xl);
-    padding: 1.4rem;
-    transition:
-      box-shadow 0.2s ease,
-      transform 0.2s ease,
-      border-color 0.2s ease;
+    background: #ffffff;
+    border: 1px solid var(--color-ink);
+    border-radius: 8px;
+    padding: 20px;
+  }
+  .card-link {
+    transition: background-color 0.15s ease;
   }
   .card-link:hover {
-    box-shadow: 0 12px 30px rgba(3, 89, 161, 0.09);
-    transform: translateY(-2px);
-    border-color: var(--color-azure-300);
+    background: var(--color-warm);
+  }
+
+  /* Die gelbe Akzentkarte: Signatur des Systems. Ganze Flaeche gelb,
+     schwarzer 700er Text, Pfeil-Button. Nur fuer die wichtigste Aktion
+     eines Abschnitts, nie fuer Fliesstext. */
+  .card-accent {
+    background: var(--color-yellow);
+    border: 1px solid var(--color-ink);
+    border-radius: 8px;
+    padding: 32px;
+    color: var(--color-ink);
+  }
+
+  /* Ruhige Flaeche fuer Hinweise und Quellen. Warm-Weiss statt Grau,
+     schwarzer Rahmen statt Schatten. */
+  .card-quiet {
+    background: var(--color-warm);
+    border: 1px solid var(--color-ink);
+    border-radius: 8px;
+    padding: 20px;
+  }
+
+  /* ---------- Kicker ----------
+     Kleines Label ueber Ueberschriften. Weit gesperrt als Gegengewicht zum
+     negativen Tracking der Displaygroessen. */
+  .kicker {
+    display: inline-block;
+    font-size: 0.8125rem;
+    font-weight: 700;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-ink);
+  }
+
+  /* Meta-Zeilen: klein, aber in Ink Black. Steel Gray schafft auf Weiss nur
+     3,5:1 und ist fuer eine 50-plus-Zielgruppe als Lesetext ungeeignet. */
+  .meta {
+    font-size: 0.8125rem;
+    line-height: 1.4;
+    color: var(--color-ink);
   }
 
   /* ---------- Artikel-Prose ---------- */
   .prose-hx {
-    color: var(--color-ink-700);
-    font-size: 1.04rem;
+    font-size: 1rem;
+    line-height: 1.57;
+    color: var(--color-ink);
   }
   .prose-hx > p {
-    margin-block: 1rem;
+    margin-block: 1.25rem;
   }
   .prose-hx h2 {
-    font-size: 1.65rem;
-    margin-top: 2.6rem;
-    margin-bottom: 0.8rem;
+    margin-top: 3rem;
+    margin-bottom: 1rem;
     scroll-margin-top: 5.5rem;
   }
   .prose-hx h3 {
-    font-size: 1.22rem;
-    margin-top: 1.9rem;
-    margin-bottom: 0.45rem;
-    color: var(--color-ink-800);
+    margin-top: 2rem;
+    margin-bottom: 0.5rem;
   }
   .prose-hx ul,
   .prose-hx ol {
-    margin-block: 1rem;
+    margin-block: 1.25rem;
     padding-left: 0;
     display: flex;
     flex-direction: column;
@@ -202,52 +326,55 @@
   }
   .prose-hx ul > li {
     position: relative;
-    padding-left: 1.55rem;
+    padding-left: 1.5rem;
   }
+  /* Quadratischer Aufzaehlungspunkt: rund waere im Flat-Pack-Raster fremd. */
   .prose-hx ul > li::before {
     content: "";
     position: absolute;
     left: 0;
-    top: 0.64em;
-    width: 0.48rem;
-    height: 0.48rem;
-    border-radius: 9999px;
-    background: var(--color-azure-400);
+    top: 0.6em;
+    width: 0.5rem;
+    height: 0.5rem;
+    background: var(--color-yellow);
+    border: 1px solid var(--color-ink);
   }
   .prose-hx ol {
     list-style: decimal;
     padding-left: 1.4rem;
   }
   .prose-hx a {
-    color: var(--color-azure-700);
+    color: var(--color-link);
     text-decoration: underline;
     text-underline-offset: 3px;
+    text-decoration-thickness: 1px;
+  }
+  .prose-hx a:hover {
+    text-decoration-thickness: 2px;
   }
   .prose-hx strong {
-    color: var(--color-ink-900);
+    font-weight: 700;
   }
-  /* Blockquote = Einordnungs-Callout in Markdown-Beitraegen */
+
+  /* Blockquote = Einordnungs-Callout. Gelber Balken links als Marker,
+     die Flaeche bleibt hell: Gelb traegt keinen Fliesstext. */
   .prose-hx blockquote {
-    margin-block: 1.75rem;
-    border: 1px solid var(--color-azure-200);
-    border-left-width: 4px;
-    border-left-color: var(--color-azure-500);
-    background: var(--color-azure-50);
-    border-radius: var(--radius-lg);
-    padding: 1.1rem 1.25rem;
-    color: var(--color-ink-700);
+    margin-block: 2rem;
+    border: 1px solid var(--color-ink);
+    border-left-width: 8px;
+    border-left-color: var(--color-yellow);
+    border-radius: 8px;
+    background: var(--color-warm);
+    padding: 20px;
   }
   .prose-hx blockquote > p {
-    margin-block: 0.4rem;
+    margin-block: 0.5rem;
   }
   .prose-hx blockquote > p:first-child {
     margin-top: 0;
   }
   .prose-hx blockquote > p:last-child {
     margin-bottom: 0;
-  }
-  .prose-hx blockquote strong {
-    color: var(--color-azure-800);
   }
 
   /* Tabellen muessen im eigenen Container scrollen, nicht die Seite.
@@ -256,24 +383,23 @@
   .prose-hx > table {
     display: block;
     overflow-x: auto;
-    margin-block: 1.5rem;
+    margin-block: 2rem;
   }
   .prose-hx table {
     width: 100%;
     border-collapse: collapse;
-    font-size: 0.94rem;
+    font-size: 0.9375rem;
   }
   .prose-hx th,
   .prose-hx td {
-    border: 1px solid var(--color-ink-200);
-    padding: 0.6rem 0.8rem;
+    border: 1px solid var(--color-ink);
+    padding: 10px 14px;
     text-align: left;
     vertical-align: top;
   }
   .prose-hx th {
-    background: var(--color-azure-50);
-    color: var(--color-ink-900);
-    font-family: var(--font-display);
+    background: var(--color-yellow);
+    font-weight: 700;
   }
 }
 

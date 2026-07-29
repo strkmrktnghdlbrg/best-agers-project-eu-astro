@@ -33,15 +33,15 @@ const searchIndex = [...hubIndex, ...index];
   description="Durchsuchen Sie alle Ratgeber von Best Agers zu Rente, Altersvorsorge, Pflegegrad, barrierefreiem Wohnen und Gesundheit ab 50."
   canonicalPath="/suche/"
 >
-  <div class="container-wide pt-6">
+  <div class="container-narrow pt-8">
     <Breadcrumbs items={[{ label: "Suche" }]} />
   </div>
 
   <div class="container-narrow py-8">
-    <h1 class="font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+    <h1 class="font-display text-3xl font-bold text-ink sm:text-4xl">
       Suche
     </h1>
-    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+    <p class="mt-4 text-lg leading-relaxed text-ink">
       Suchen Sie nach einem Stichwort, etwa „Pflegegrad", „Treppenlift" oder
       „Riester".
     </p>
@@ -55,17 +55,17 @@ const searchIndex = [...hubIndex, ...index];
           name="q"
           autocomplete="off"
           placeholder="Stichwort eingeben"
-          class="min-w-0 flex-1 rounded-full border border-ink-300 px-5 py-3 text-base text-ink-800 outline-none transition-colors focus:border-azure-500"
+          class="min-w-0 flex-1 rounded-lg border border-ink px-5 py-3 text-base text-ink outline-none transition-colors focus:border-ink"
         />
         <button type="submit" class="btn btn-primary">Suchen</button>
       </div>
     </form>
 
-    <p id="search-status" class="mt-6 text-sm text-ink-500" role="status"></p>
+    <p id="search-status" class="mt-6 text-sm text-ink" role="status"></p>
     <ul id="search-results" class="mt-4 flex flex-col gap-3"></ul>
 
     <noscript>
-      <p class="mt-6 rounded-xl border border-warn-200 bg-warn-50 p-4 text-sm text-warn-700">
+      <p class="mt-6 rounded-lg border border-ink bg-warm p-4 text-sm text-ink">
         Für die Suche wird JavaScript benötigt. Alle Beiträge finden Sie auch
         im <a href="/ratgeber/" class="underline">Ratgeber-Überblick</a>.
       </p>
@@ -139,14 +139,14 @@ const searchIndex = [...hubIndex, ...index];
       const a = document.createElement("a");
       a.href = r.u;
       a.className =
-        "block rounded-xl border border-ink-200 bg-white p-4 transition-colors hover:border-azure-300";
+        "block rounded-lg border border-ink bg-white p-4 transition-colors hover:border-ink";
       const kicker = document.createElement("span");
       kicker.className =
-        "text-xs font-semibold uppercase tracking-wide text-azure-600";
+        "text-xs font-bold uppercase tracking-wide text-link";
       kicker.textContent = r.h;
       const title = document.createElement("span");
       title.className =
-        "mt-1.5 block font-display text-base font-bold text-ink-900";
+        "mt-1.5 block font-display text-base font-bold text-ink";
       title.textContent = r.t;
       a.append(kicker, title);
       li.append(a);

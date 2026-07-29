@@ -11,7 +11,7 @@ import { hubs } from "../../data/taxonomy";
 >
   <div class="container-narrow py-16">
     <span
-      class="inline-flex h-12 w-12 items-center justify-center rounded-full bg-evid-50 text-evid-700"
+      class="inline-flex h-12 w-12 items-center justify-center rounded-lg border border-ink bg-yellow text-ink"
       aria-hidden="true"
     >
       <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
@@ -23,15 +23,15 @@ import { hubs } from "../../data/taxonomy";
           stroke-linejoin="round"></path>
       </svg>
     </span>
-    <h1 class="mt-5 font-display text-3xl font-bold text-ink-900 sm:text-4xl">
+    <h1 class="mt-5 font-display text-3xl font-bold text-ink sm:text-4xl">
       Vielen Dank, Ihre Nachricht ist angekommen
     </h1>
-    <p class="mt-4 text-lg leading-relaxed text-ink-600">
+    <p class="mt-4 text-lg leading-relaxed text-ink">
       Wir lesen jede Zuschrift. Hinweise auf falsche Beträge oder überholte
       Regeln bearbeiten wir zuerst. Eine Antwort kann ein paar Tage dauern.
     </p>
 
-    <h2 class="mt-12 font-display text-xl font-bold text-ink-900">
+    <h2 class="mt-12 font-display text-xl font-bold text-ink">
       Weiterlesen
     </h2>
     <ul class="mt-4 grid gap-3 sm:grid-cols-2">
@@ -40,12 +40,12 @@ import { hubs } from "../../data/taxonomy";
           <li>
             <a
               href={`/${hub.slug}/`}
-              class="block h-full rounded-xl border border-ink-200 bg-white p-4 transition-colors hover:border-azure-300"
+              class="block h-full rounded-lg border border-ink bg-white p-4 transition-colors hover:border-ink"
             >
-              <span class="font-display text-base font-bold text-ink-900">
+              <span class="font-display text-base font-bold text-ink">
                 {hub.name}
               </span>
-              <span class="mt-1 block text-sm leading-relaxed text-ink-500">
+              <span class="mt-1 block text-sm leading-relaxed text-ink">
                 {hub.teaser}
               </span>
             </a>
