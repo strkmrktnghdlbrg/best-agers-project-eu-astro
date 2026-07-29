@@ -5,6 +5,8 @@ import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import FaqBlock from "../../components/FaqBlock.astro";
 import RelatedLinks from "../../components/RelatedLinks.astro";
 import PartnerSlot from "../../components/PartnerSlot.astro";
+import MediaCard from "../../components/MediaCard.astro";
+import { imageFor } from "../../data/images";
 import { hubs, livePages, pageUrl } from "../../data/taxonomy";
 import { site } from "../../data/site";
 
@@ -77,10 +79,13 @@ const schema = [
   </div>
 
   <header class="container-narrow pt-6">
-    <h1 class="font-display text-3xl font-bold text-ink sm:text-4xl">
-      {hub.title}
-    </h1>
-    <p class="mt-4 text-lg leading-relaxed text-ink">
+    <MediaCard
+      path={canonicalPath}
+      kicker={hub.name}
+      heading={hub.title}
+      headingLevel="h1"
+    />
+    <p class="mt-8 text-lg">
       {entry?.data.lead ?? hub.claim}
     </p>
     {
@@ -115,13 +120,22 @@ const schema = [
       <div class="mt-5 grid gap-4 sm:grid-cols-2">
         {
           pages.map((p) => (
-            <a href={pageUrl(hub, p)} class="card card-link min-w-0">
-              <h3 class="font-display text-base font-bold text-ink">
-                {p.nav}
-              </h3>
-              <p class="mt-1.5 text-sm leading-relaxed text-ink">
-                {p.title}
-              </p>
+            <a href={pageUrl(hub, p)} class="card card-link block min-w-0 !p-0">
+              {imageFor(pageUrl(hub, p)) && (
+                <img
+                  src={imageFor(pageUrl(hub, p))!.srcCard}
+                  width="600"
+                  height="338"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-video w-full rounded-t-lg border-b border-ink object-cover"
+                />
+              )}
+              <span class="block p-5">
+                <h3>{p.nav}</h3>
+                <p class="mt-2 text-base">{p.title}</p>
+              </span>
             </a>
           ))
         }

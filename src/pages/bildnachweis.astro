@@ -1,0 +1,123 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumbs from "../components/Breadcrumbs.astro";
+import { allImages, licenseLabel } from "../data/images";
+
+/**
+ * Sammelnachweis fuer alle verwendeten Fotos.
+ *
+ * noindex und aus der Sitemap gefiltert: die Seite hat keinen eigenen
+ * Suchwert, muss aber erreichbar sein. Verlinkt aus dem Footer und aus der
+ * Bildunterschrift jedes einzelnen Fotos.
+ *
+ * Alle Motive stammen von StockSnap.io und stehen unter CC0. Eine Nennung ist
+ * damit rechtlich nicht gefordert; wir fuehren sie trotzdem, weil der Bestand
+ * spaeter auch CC-BY-Motive aufnehmen kann und der Nachweis dann schon steht.
+ */
+---
+
+<BaseLayout
+  title="Bildnachweis"
+  description="Herkunft und Lizenz aller auf best-agers-project.eu verwendeten Fotos."
+  canonicalPath="/bildnachweis/"
+  noindex={true}
+>
+  <div class="container-wide pt-8">
+    <Breadcrumbs items={[{ label: "Bildnachweis" }]} />
+  </div>
+
+  <div class="container-wide py-8">
+    <h1>Bildnachweis</h1>
+    <p class="mt-6 max-w-3xl text-lg">
+      Alle Fotos auf dieser Website sind Symbolbilder. Sie stammen aus frei
+      lizenzierten Beständen und zeigen weder die im Text beschriebenen
+      Personen noch konkrete Produkte oder Anbieter.
+    </p>
+    <p class="mt-4 max-w-3xl text-base">
+      Quelle ist durchgehend StockSnap.io, vermittelt über die Openverse-Suche.
+      Die Bilder stehen unter CC0 1.0 und sind damit gemeinfrei, eine Nennung
+      ist rechtlich nicht erforderlich. Wir führen sie dennoch auf.
+    </p>
+
+    <div class="mt-10 overflow-x-auto">
+      <table class="w-full border-collapse text-base">
+        <thead>
+          <tr>
+            <th
+              class="border border-ink bg-yellow p-3 text-left font-bold"
+              scope="col">Seite</th
+            >
+            <th
+              class="border border-ink bg-yellow p-3 text-left font-bold"
+              scope="col">Motiv</th
+            >
+            <th
+              class="border border-ink bg-yellow p-3 text-left font-bold"
+              scope="col">Urheber</th
+            >
+            <th
+              class="border border-ink bg-yellow p-3 text-left font-bold"
+              scope="col">Lizenz</th
+            >
+          </tr>
+        </thead>
+        <tbody>
+          {
+            allImages.map((img) => (
+              <tr>
+                <td class="border border-ink p-3 align-top">
+                  <a
+                    href={img.path}
+                    class="text-link underline decoration-1 underline-offset-4"
+                  >
+                    {img.path}
+                  </a>
+                </td>
+                <td class="border border-ink p-3 align-top">
+                  {img.source ? (
+                    <a
+                      href={img.source}
+                      rel="nofollow noopener"
+                      target="_blank"
+                      class="text-link underline decoration-1 underline-offset-4"
+                    >
+                      {img.title || "ohne Titel"}
+                    </a>
+                  ) : (
+                    img.title || "ohne Titel"
+                  )}
+                </td>
+                <td class="border border-ink p-3 align-top">
+                  {img.creator || "unbekannt"}
+                  {img.provider ? `, ${img.provider}` : ""}
+                </td>
+                <td class="border border-ink p-3 align-top">
+                  {img.licenseUrl ? (
+                    <a
+                      href={img.licenseUrl}
+                      rel="nofollow noopener"
+                      target="_blank"
+                      class="text-link underline decoration-1 underline-offset-4"
+                    >
+                      {licenseLabel(img)}
+                    </a>
+                  ) : (
+                    licenseLabel(img)
+                  )}
+                </td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <p class="mt-8 max-w-3xl text-base">
+      Sollte ein Nachweis fehlerhaft sein, schreiben Sie uns bitte über das{" "}
+      <a
+        href="/kontakt/"
+        class="text-link underline decoration-1 underline-offset-4">Kontaktformular</a
+      >. Wir korrigieren das mit Vorrang.
+    </p>
+  </div>
+</BaseLayout>

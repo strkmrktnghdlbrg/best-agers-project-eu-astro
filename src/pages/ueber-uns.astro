@@ -1,6 +1,7 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import Breadcrumbs from "../components/Breadcrumbs.astro";
+import PageImage from "../components/PageImage.astro";
 import { site } from "../data/site";
 
 /**
@@ -47,6 +48,8 @@ const redaktion = [
       ab etwa 50 praktisch werden: Rente, Vorsorge, Pflege, Wohnen und
       Gesundheit.
     </p>
+
+    <PageImage path="/ueber-uns/" priority={true} class="mt-8" />
 
     <div class="prose-hx mt-8">
       <h2>Warum es diese Seite gibt</h2>

@@ -16,7 +16,7 @@ export default defineConfig({
       // Rechtsseiten gehoeren nicht in die Sitemap (noindex, siehe BaseLayout).
       // Die Danke-Seite ebenfalls nicht – sie ist ein Formular-Ziel, kein Inhalt.
       filter: (page) =>
-        !/\/(impressum|datenschutz|haftungsausschluss|danke)\/$/.test(page),
+        !/\/(impressum|datenschutz|haftungsausschluss|danke|bildnachweis)\/$/.test(page),
     }),
   ],
   vite: { plugins: [tailwindcss()] },

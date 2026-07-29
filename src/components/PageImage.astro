@@ -1,0 +1,73 @@
+---
+import { imageFor, licenseLabel } from "../data/images";
+
+/**
+ * Bildkarte ohne Textueberlagerung, fuer Artikel- und Uebersichtsseiten.
+ *
+ * Bilder liegen immer full-bleed in einer 8px-Karte, nie freigestellt und nie
+ * in organischen Formen. Der Rahmen ist derselbe wie bei allen Karten, damit
+ * das Bild als Bauteil des Systems liest und nicht als Fremdkoerper.
+ *
+ * Der Nachweis steht direkt unter dem Bild. StockSnap ist durchgaengig CC0 und
+ * verlangt keine Nennung, wir rendern sie trotzdem: das ist billiger als die
+ * Frage, ob im Bestand irgendwann doch ein CC-BY-Motiv landet.
+ */
+interface Props {
+  /** Seitenpfad mit fuehrendem und abschliessendem Slash. */
+  path: string;
+  /** Erstes Bild der Seite: eager laden, alle weiteren lazy. */
+  priority?: boolean;
+  /**
+   * "banner" flacht auf 21:9 ab. Auf Uebersichtsseiten in voller Seitenbreite
+   * waere 16:9 ein Hero, der den gesamten Inhalt unter die Falz druecken
+   * wuerde – dort zaehlt die Liste, nicht das Foto.
+   */
+  variant?: "article" | "banner";
+  class?: string;
+}
+const {
+  path,
+  priority = false,
+  variant = "article",
+  class: cls = "",
+} = Astro.props;
+const img = imageFor(path);
+// Banner zusaetzlich in der Hoehe deckeln: 21:9 auf 1440px Containerbreite
+// waeren immer noch ueber 600px und damit faktisch ein Hero.
+const ratio =
+  variant === "banner" ? "aspect-[21/9] max-h-[20rem]" : "aspect-video";
+---
+
+{
+  img && (
+    <figure class:list={["not-prose", cls]}>
+      <img
+        src={img.src}
+        width={img.width}
+        height={img.height}
+        alt={img.alt}
+        loading={priority ? "eager" : "lazy"}
+        fetchpriority={priority ? "high" : "auto"}
+        decoding="async"
+        class:list={["block w-full rounded-lg border border-ink object-cover", ratio]}
+      />
+      <figcaption class="mt-2 text-caption text-ink">
+        Symbolbild ·{" "}
+        {img.creator ? (
+          <>
+            {img.creator}, {img.provider || "StockSnap"}
+          </>
+        ) : (
+          <>{img.provider || "StockSnap"}</>
+        )}{" "}
+        · {licenseLabel(img)} ·{" "}
+        <a
+          href="/bildnachweis/"
+          class="text-link underline decoration-1 underline-offset-2"
+        >
+          Bildnachweis
+        </a>
+      </figcaption>
+    </figure>
+  )
+}

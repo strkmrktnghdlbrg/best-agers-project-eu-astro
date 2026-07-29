@@ -1,0 +1,107 @@
+---
+import { imageFor, licenseLabel } from "../data/images";
+
+/**
+ * Bildkarte MIT Textueberlagerung. Das Leitmotiv des Systems: full-bleed
+ * Foto, 8px Radius, Verlauf nach Schwarz ueber dem unteren Drittel, darauf
+ * Kicker und Ueberschrift in Weiss.
+ *
+ * Der Verlauf ist Pflicht, nicht Geschmack: Fliesstext direkt auf Fotografie
+ * ist je nach Motiv unlesbar. Er laeuft bis 0,72 Alpha, damit auch helle
+ * Bildbereiche die 4,5:1 fuer weissen Text tragen.
+ */
+interface Props {
+  path: string;
+  kicker?: string;
+  /** Ueberschrift wird als h1 gerendert, wenn `heading` gesetzt ist. */
+  heading?: string;
+  headingLevel?: "h1" | "h2" | "p";
+  /** Mindesthoehe der Karte, damit kurze Ueberschriften nicht gequetscht wirken. */
+  tall?: boolean;
+  class?: string;
+}
+const {
+  path,
+  kicker,
+  heading,
+  headingLevel = "h1",
+  tall = false,
+  class: cls = "",
+} = Astro.props;
+const img = imageFor(path);
+const Heading = headingLevel;
+---
+
+{
+  img && (
+    <figure class:list={["not-prose", cls]}>
+      <div
+        class:list={[
+          "relative isolate overflow-hidden rounded-lg border border-ink",
+          tall ? "min-h-[26rem] sm:min-h-[30rem]" : "min-h-[18rem] sm:min-h-[22rem]",
+        ]}
+      >
+        <img
+          src={img.src}
+          width={img.width}
+          height={img.height}
+          alt={img.alt}
+          loading="eager"
+          fetchpriority="high"
+          decoding="async"
+          class="absolute inset-0 -z-10 h-full w-full object-cover"
+        />
+        {/* Verlauf nach Schwarz. Bewusst als eigenes Element statt als
+            background-image auf dem Bild: so bleibt das Foto ein <img> mit
+            alt-Text.
+
+            Ueber die GANZE Hoehe, nicht nur ueber dem unteren Drittel: eine
+            dreizeilige deutsche Ueberschrift wie "Rente und Ruhestand: Antrag,
+            Berechnung, Steuern" ragt sonst oben aus dem Verlauf heraus und
+            steht auf hellem Bildbereich. Der zusaetzliche Grundschleier kostet
+            etwas Bildwirkung und sichert dafuer die Lesbarkeit auf jedem
+            Motiv, auch auf denen, die spaeter dazukommen. */}
+        <div
+          class="absolute inset-0 -z-10 bg-gradient-to-t from-black/[0.82] via-black/55 to-black/25"
+          aria-hidden="true"
+        />
+        <div class="relative flex h-full min-h-inherit flex-col justify-end p-6 sm:p-10">
+          {kicker && (
+            <p class="text-caption font-bold uppercase tracking-[0.08em] text-white">
+              {kicker}
+            </p>
+          )}
+          {heading && (
+            <Heading class="mt-3 max-w-3xl text-white">{heading}</Heading>
+          )}
+          <slot />
+        </div>
+      </div>
+      <figcaption class="mt-2 text-caption text-ink">
+        Symbolbild ·{" "}
+        {img.creator ? (
+          <>
+            {img.creator}, {img.provider || "StockSnap"}
+          </>
+        ) : (
+          <>{img.provider || "StockSnap"}</>
+        )}{" "}
+        · {licenseLabel(img)} ·{" "}
+        <a
+          href="/bildnachweis/"
+          class="text-link underline decoration-1 underline-offset-2"
+        >
+          Bildnachweis
+        </a>
+      </figcaption>
+    </figure>
+  )
+}
+
+<style>
+  /* Damit der Inhalt die Mindesthoehe der Karte wirklich ausfuellt und die
+     Ueberschrift unten sitzt, auch wenn wenig Text da ist. */
+  .min-h-inherit {
+    min-height: inherit;
+  }
+</style>

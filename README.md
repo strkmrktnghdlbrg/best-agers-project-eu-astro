@@ -78,15 +78,55 @@ Vorlage nutzt es für Sekundärtext, das ist bei einer 50-plus-Zielgruppe nicht
 vertretbar. Lesbarer Text ist hier durchgehend Ink Black. Geprüft: alle zehn
 Seitentypen mit null Kontrastfehlern nach WCAG AA.
 
-**Zweite Abweichung:** Die Vorlage ist medienzentriert und lebt von Bildkarten
-mit Gradient-zu-Schwarz-Overlays. Dieses Portal hat keine Fotografie, deshalb
-tragen die textbasierten Muster: gelbe Aktionsflächen, schwarz umrandete
-Flachkarten und harte Typo-Kontraste. Wenn später Bilder dazukommen, gehören
-sie full-bleed in 8px-Karten mit Overlay, nie ohne.
+Die Vorlage ist medienzentriert und lebt von Bildkarten mit
+Gradient-zu-Schwarz-Overlays. Das Portal bedient das mit 52 Symbolbildern,
+siehe unten. Wo kein Bild sitzt, tragen die textbasierten Muster: gelbe
+Aktionsflächen, schwarz umrandete Flachkarten und harte Typo-Kontraste.
+
+## Bilder
+
+52 Symbolbilder, eins je Inhaltsseite. Rechtsseiten, Kontakt, Suche, Danke und
+404 bekommen bewusst keins.
+
+Quelle ist durchgehend **StockSnap.io** über die Openverse-API, Lizenz CC0.
+Kein API-Key nötig, das anonyme Rate-Limit wird über Pausen und 429-Backoff
+respektiert. Die Pipeline liegt in `tools/`:
+
+```bash
+npm run images:fetch   # Kandidaten je Themen-Pool -> tools/image-candidates.json
+npm run images:build   # Zuordnung, Download, WebP -> public/images/
+```
+
+Beide Schritte sind idempotent: vorhandene Zuordnungen und Dateien bleiben
+stehen. Soll neu gemischt werden, `src/data/page-images.generated.json` und
+den Bildordner wegräumen statt patchen.
+
+**Der Sichtungsschritt ist Pflicht, nicht optional.** Im ersten Lauf haben die
+automatischen Filter durchgelassen: eine Frau in der Badewanne beim
+barrierefreien Bad, ein Strandfoto beim Rollator, Weihnachtsmotive mit
+Enkelkind bei den Wechseljahren und US-Dollarnoten bei der Altersvorsorge.
+18 Fotos stehen deshalb in `tools/blocked-images.json`, jeweils mit
+Begründung. Kontaktbogen bauen, alle Zuordnungen ansehen, Ausreißer sperren,
+neu bauen.
+
+Gelernt: StockSnap liefert auf `woman` fast nur Models um die 30. Für ein
+50-plus-Portal braucht es Pools mit explizitem Altersbezug (`senior woman`,
+`elderly woman`), sonst widerspricht das Bild dem Text.
+
+Darstellung nach den Regeln des Design-Systems: full-bleed in einer
+8px-Karte mit schwarzem Rahmen, nie freigestellt. Wo Text auf dem Bild sitzt
+(Startseite, Hub-Köpfe), liegt ein Verlauf nach Schwarz über der **ganzen**
+Fläche, nicht nur über dem unteren Drittel: dreizeilige deutsche
+Überschriften ragen sonst oben heraus. Gemessen an den gerenderten Pixeln
+liegt der schlechteste Kontrast für weißen Text bei 6,7:1.
+
+Nachweis unter jedem Bild plus Sammelseite `/bildnachweis/` (noindex, aus der
+Sitemap gefiltert, im Footer verlinkt). CC0 verlangt keine Nennung, wir führen
+sie trotzdem, damit der Nachweis steht, falls später CC-BY-Motive dazukommen.
 
 ## Stand
 
-- 59 Seiten, 43 Artikel, rund 26.000 Wörter
+- 59 Seiten, 43 Artikel, rund 26.000 Wörter, 52 Symbolbilder
 - Alle Beträge gegen amtliche Quellen geprüft (Stand Juli 2026): Rentenwert
   42,52 €, Pflegegeld 347/599/800/990 €, Entlastungsbetrag 131 €,
   Pflegehilfsmittel 42 €, Wohnumfeld-Zuschuss 4.180 €, Grundfreibetrag

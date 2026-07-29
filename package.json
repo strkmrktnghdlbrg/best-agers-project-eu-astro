@@ -8,7 +8,8 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
-    "creators": "node scripts/fetch-creators.mjs"
+    "images:fetch": "node tools/images-fetch.mjs",
+    "images:build": "node tools/images-build.mjs"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.2.1",
@@ -17,5 +18,8 @@
     "@tailwindcss/vite": "^4.0.0",
     "astro": "^5.1.1",
     "tailwindcss": "^4.0.0"
+  },
+  "devDependencies": {
+    "sharp": "^0.35.3"
   }
 }

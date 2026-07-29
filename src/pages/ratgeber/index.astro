@@ -3,6 +3,8 @@ import BaseLayout from "../../layouts/BaseLayout.astro";
 import Breadcrumbs from "../../components/Breadcrumbs.astro";
 import { hubs, livePages, pageUrl } from "../../data/taxonomy";
 import { allLivePages } from "../../data/taxonomy";
+import PageImage from "../../components/PageImage.astro";
+import { imageFor } from "../../data/images";
 ---
 
 <BaseLayout
@@ -22,6 +24,7 @@ import { allLivePages } from "../../data/taxonomy";
       {allLivePages.length} Beiträge in fünf Themenbereichen. Jeder Beitrag
       nennt die Beträge mit Stand und die Quelle, aus der sie stammen.
     </p>
+    <PageImage path="/ratgeber/" priority={true} variant="banner" class="mt-8" />
   </header>
 
   <div class="container-wide py-12">
@@ -42,8 +45,19 @@ import { allLivePages } from "../../data/taxonomy";
           <ul class="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {livePages(hub).map((p) => (
               <li>
-                <a href={pageUrl(hub, p)} class="card card-link block h-full min-w-0">
-                  <span class="font-display text-base font-bold leading-snug text-ink">
+                <a href={pageUrl(hub, p)} class="card card-link block h-full min-w-0 !p-0">
+                  {imageFor(pageUrl(hub, p)) && (
+                    <img
+                      src={imageFor(pageUrl(hub, p))!.srcCard}
+                      width="600"
+                      height="338"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                      class="aspect-video w-full rounded-t-lg border-b border-ink object-cover"
+                    />
+                  )}
+                  <span class="block p-5 text-subheading font-bold leading-[1.2] tracking-[-0.027em]">
                     {p.title}
                   </span>
                 </a>

@@ -2,6 +2,8 @@
 import BaseLayout from "../layouts/BaseLayout.astro";
 import PartnerSlot from "../components/PartnerSlot.astro";
 import ArrowIcon from "../components/ArrowIcon.astro";
+import MediaCard from "../components/MediaCard.astro";
+import { imageFor } from "../data/images";
 import { hubs, livePages, pageUrl, allLivePages } from "../data/taxonomy";
 import { site } from "../data/site";
 
@@ -52,26 +54,23 @@ const schema = [
       Typografie, was das Original mit Bildern macht. */}
   <section class="container-wide pt-8 pb-20">
     <div class="grid gap-6 lg:grid-cols-3">
-      <div
-        class="rounded-lg border border-ink bg-warm p-8 sm:p-12 lg:col-span-2"
-      >
-        <p class="kicker">{site.tagline}</p>
-        <h1 class="mt-5">Die zweite Lebenshälfte gut organisiert</h1>
-        <p class="mt-6 max-w-2xl text-lg">
-          Rentenantrag, Pflegegrad, Treppenlift, Altersvorsorge: die Themen ab
-          50 hängen an Fristen, Anträgen und Beträgen, die kaum jemand parat
-          hat. Wir erklären sie mit aktuellen Zahlen und nennen die Quelle dazu.
-        </p>
-        <div class="mt-8 flex flex-wrap gap-3">
-          <a href="/ratgeber/" class="btn btn-primary">Alle Ratgeber</a>
-          <a href="/suche/" class="btn btn-outline">Thema suchen</a>
-        </div>
-      </div>
+      {/* Bildkarte 2/3 mit Verlauf und Ueberschrift darauf, daneben die
+          gelbe Aktionsflaeche 1/3. Das ist das Leitmotiv des Systems. */}
+      <MediaCard
+        path="/"
+        kicker={site.tagline}
+        heading="Die zweite Lebenshälfte gut organisiert"
+        headingLevel="h1"
+        tall={true}
+        class="lg:col-span-2"
+      />
 
       {/* Die gelbe Flaeche: eine einzige, klar wichtigste Aktion. */}
       <a
         href="/rente/"
-        class="card-accent flex flex-col justify-between gap-10 transition-colors hover:bg-[#f0cf00]"
+        {/* mb-[1.85rem] gleicht die Bildunterschrift der Nachbarkarte aus,
+            damit beide Karten unten auf derselben Linie enden. */}
+        class="card-accent mb-[1.85rem] flex flex-col justify-between gap-10 transition-colors hover:bg-[#f0cf00]"
       >
         <div>
           <p class="kicker">Meistgesucht</p>
@@ -85,6 +84,18 @@ const schema = [
         <span class="btn-arrow" aria-hidden="true"><ArrowIcon /></span>
       </a>
     </div>
+
+    <div class="mt-10 max-w-3xl">
+      <p class="text-lg">
+        Rentenantrag, Pflegegrad, Treppenlift, Altersvorsorge: die Themen ab 50
+        hängen an Fristen, Anträgen und Beträgen, die kaum jemand parat hat. Wir
+        erklären sie mit aktuellen Zahlen und nennen die Quelle dazu.
+      </p>
+      <div class="mt-6 flex flex-wrap gap-3">
+        <a href="/ratgeber/" class="btn btn-primary">Alle Ratgeber</a>
+        <a href="/suche/" class="btn btn-outline">Thema suchen</a>
+      </div>
+    </div>
   </section>
 
   <!-- Hubs -->
@@ -97,17 +108,30 @@ const schema = [
     <div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
       {
         hubs.map((hub) => (
-          <a href={`/${hub.slug}/`} class="card card-link flex min-w-0 flex-col">
+          <a href={`/${hub.slug}/`} class="card card-link flex min-w-0 flex-col !p-0">
+            {imageFor(`/${hub.slug}/`) && (
+              <img
+                src={imageFor(`/${hub.slug}/`)!.srcCard}
+                width="600"
+                height="338"
+                alt=""
+                loading="lazy"
+                decoding="async"
+                class="aspect-video w-full rounded-t-lg border-b border-ink object-cover"
+              />
+            )}
+            <span class="flex flex-1 flex-col p-5">
             <h3>{hub.name}</h3>
             <p class="mt-3 flex-1 text-base">{hub.teaser}</p>
-            <p class="mt-6 flex items-center justify-between gap-4">
+            <span class="mt-6 flex items-center justify-between gap-4">
               <span class="text-caption font-bold uppercase tracking-[0.08em]">
                 {livePages(hub).length} Ratgeber
               </span>
               <span class="btn-arrow" aria-hidden="true">
                 <ArrowIcon />
               </span>
-            </p>
+            </span>
+            </span>
           </a>
         ))
       }
@@ -165,10 +189,23 @@ const schema = [
           .sort((a, b) => b.vol * (1 + b.cpc) - a.vol * (1 + a.cpc))
           .slice(0, 8)
           .map((p) => (
-            <a href={`/${p.hub}/${p.slug}/`} class="card card-link min-w-0">
-              <span class="kicker">{p.hubName}</span>
-              <span class="mt-3 block text-subheading font-bold leading-[1.2] tracking-[-0.027em]">
-                {p.title}
+            <a href={`/${p.hub}/${p.slug}/`} class="card card-link block min-w-0 !p-0">
+              {imageFor(`/${p.hub}/${p.slug}/`) && (
+                <img
+                  src={imageFor(`/${p.hub}/${p.slug}/`)!.srcCard}
+                  width="600"
+                  height="338"
+                  alt=""
+                  loading="lazy"
+                  decoding="async"
+                  class="aspect-video w-full rounded-t-lg border-b border-ink object-cover"
+                />
+              )}
+              <span class="block p-5">
+                <span class="kicker">{p.hubName}</span>
+                <span class="mt-3 block text-subheading font-bold leading-[1.2] tracking-[-0.027em]">
+                  {p.title}
+                </span>
               </span>
             </a>
           ))
