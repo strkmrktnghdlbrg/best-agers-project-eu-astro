@@ -88,18 +88,6 @@ const schema = [
     <p class="mt-8 text-lg">
       {entry?.data.lead ?? hub.claim}
     </p>
-    {
-      entry && (
-        <p class="mt-3 text-sm text-ink">
-          Stand:{" "}
-          {entry.data.updated.toLocaleDateString("de-DE", {
-            day: "2-digit",
-            month: "long",
-            year: "numeric",
-          })}
-        </p>
-      )
-    }
   </header>
 
   <div class="container-narrow min-w-0">
