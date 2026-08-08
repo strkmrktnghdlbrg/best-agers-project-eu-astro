@@ -211,13 +211,22 @@ export const relatedHubs = (slug: string): Hub[] =>
     .map((s) => hubBySlug(s))
     .filter((h): h is Hub => Boolean(h));
 
-/** Navigation aus der Taxonomie ableiten – eine Quelle der Wahrheit. */
+/**
+ * Navigation aus der Taxonomie ableiten – eine Quelle der Wahrheit.
+ *
+ * Kein slice-Limit: ein Deckel auf 8 Eintraegen hat vier Live-Seiten aus dem
+ * Menue geworfen, obwohl der Fliesstext auf sie verlinkt hat – zuletzt
+ * "Rollator kaufen" und "Rollator auf Rezept" unter Wohnen. Erreichbarkeit
+ * schlaegt Menuelaenge; die Zahl der Live-Seiten je Hub steuert ohnehin die
+ * Taxonomie, nicht die Navigation.
+ */
 export const nav = hubs.map((h) => ({
   label: h.name,
   href: `/${h.slug}/`,
-  children: livePages(h)
-    .slice(0, 8)
-    .map((p) => ({ label: p.nav, href: `/${h.slug}/${p.slug}/` })),
+  children: livePages(h).map((p) => ({
+    label: p.nav,
+    href: `/${h.slug}/${p.slug}/`,
+  })),
 }));
 
 /** Alle Live-Seiten flach – für Suche, Sitemap-Checks und die 404. */
