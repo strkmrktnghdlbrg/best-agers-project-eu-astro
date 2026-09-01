@@ -40,4 +40,26 @@ const hubs = defineCollection({
   }),
 });
 
-export const collections = { artikel, hubs };
+/**
+ * Hilfsmittel – Produktuebersichten fuer den Alltag ab 50.
+ *
+ * Bewusst neben der Hub-Taxonomie und nicht darin: die Hubs tragen die
+ * YMYL-Ratgeber mit Quellen und FAQ, hier stehen Kaufuebersichten. Beides in
+ * denselben Baum zu legen wuerde den Ratgeberteil verwaessern - und genau
+ * "programmatische Massenseiten mit Ads" ist das Muster, an dem AdSense
+ * anderswo im Portfolio haengengeblieben ist.
+ */
+const hilfsmittel = defineCollection({
+  loader: glob({ pattern: "**/*.md", base: "./src/content/hilfsmittel" }),
+  schema: z.object({
+    title: z.string(),
+    description: z.string(),
+    /** Grobe Rubrik fuer die Gruppierung auf der Uebersicht. */
+    rubrik: z.enum(["mobilitaet", "sicherheit", "gesundheit", "alltag"]),
+    updated: z.coerce.date(),
+    cover: z.string().optional(),
+  }),
+});
+
+export const collections = {
+  hilfsmittel, artikel, hubs };

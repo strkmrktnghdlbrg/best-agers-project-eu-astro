@@ -1,0 +1,52 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+
+const RUBRIK: [string, string, string][] = [
+  ["mobilitaet", "Mobilität", "Unterwegs sicher und selbstständig bleiben."],
+  ["sicherheit", "Sicherheit zu Hause", "Stürze vermeiden, im Notfall Hilfe holen."],
+  ["gesundheit", "Gesundheit", "Werte im Blick behalten, Medikamente im Griff."],
+  ["alltag", "Alltag", "Kleine Hilfen, die den Tag spürbar leichter machen."],
+];
+
+const alle = (await getCollection("hilfsmittel")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title, "de")
+);
+const gruppen = RUBRIK.map(([slug, label, text]) => ({
+  slug, label, text, items: alle.filter((e) => e.data.rubrik === slug),
+})).filter((g) => g.items.length > 0);
+---
+
+<BaseLayout
+  title="Hilfsmittel für den Alltag ab 50"
+  description="Rollatoren, Hausnotruf, Haltegriffe, Blutdruckmessgeräte und andere Alltagshilfen – nach Bereich sortiert, mit konkreten Empfehlungen."
+  canonicalPath="/hilfsmittel/"
+>
+  <div class="container-narrow py-10">
+    <Breadcrumbs items={[{ label: "Start", href: "/" }, { label: "Hilfsmittel", href: "/hilfsmittel/" }]} />
+
+    <h1 class="mt-6 text-3xl font-bold text-ink sm:text-4xl">Hilfsmittel für den Alltag</h1>
+    <p class="mt-4 text-lg text-ink">
+      {alle.length} Übersichten zu Geräten und Alltagshilfen ab 50. Die Ratgeber in den Hubs
+      erklären Ansprüche, Fristen und Kostenträger &ndash; hier geht es um die Produkte selbst.
+    </p>
+
+    {gruppen.map((g) => (
+      <section class="mt-10">
+        <h2 class="text-2xl font-bold text-ink">{g.label}</h2>
+        <p class="mt-1 text-ink/80">{g.text}</p>
+        <ul class="mt-4 grid gap-3 sm:grid-cols-2">
+          {g.items.map((e) => (
+            <li class="border border-ink p-4">
+              <a href={`/hilfsmittel/${e.id}/`} class="block">
+                <span class="block font-bold text-ink">{e.data.title}</span>
+                <span class="mt-1.5 block text-sm text-ink/80">{e.data.description}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

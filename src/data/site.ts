@@ -30,8 +30,15 @@ export const site = {
    *   2. Altersvorsorge     – CPC bis 8,34 EUR, FinanceAds/FinanceQuality vorhanden
    *   3. Pflegehilfsmittel  – "pflegepaket bei pflegegrad 2" CPC 7,72 EUR
    */
-  partnersActive: false,
+  partnersActive: true,
   outboundBase: "/go/",
+
+  /**
+   * Amazon PartnerNet. Tracking-ID am 29.08.2026 angelegt; bis dahin lief
+   * AmazonBoxGrid auf `tag=undefined`, weil das Feld hier fehlte.
+   */
+  amazonTag: "best-agers-project.eu-21",
+  amazonHost: "https://www.amazon.de",
 
   /**
    * AdSense – WEBMAGICS LTD.

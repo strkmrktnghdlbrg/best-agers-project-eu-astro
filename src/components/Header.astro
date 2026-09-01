@@ -1,6 +1,9 @@
 ---
 import { site } from "../data/site";
-import { nav } from "../data/taxonomy";
+import { nav as hubNav } from "../data/taxonomy";
+
+// Die Hilfsmittel-Uebersicht liegt bewusst neben der Hub-Taxonomie.
+const nav = [...hubNav, { label: "Hilfsmittel", href: "/hilfsmittel/", children: [] }];
 
 const path = Astro.url.pathname;
 const isActive = (href: string) => path === href || (href !== "/" && path.startsWith(href));

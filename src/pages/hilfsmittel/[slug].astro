@@ -1,0 +1,83 @@
+---
+import { getCollection, render } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import Breadcrumbs from "../../components/Breadcrumbs.astro";
+import { site } from "../../data/site";
+
+export async function getStaticPaths() {
+  const eintraege = await getCollection("hilfsmittel");
+  return eintraege.map((entry) => ({ params: { slug: entry.id }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await render(entry);
+
+const RUBRIK: Record<string, string> = {
+  mobilitaet: "Mobilität",
+  sicherheit: "Sicherheit zu Hause",
+  gesundheit: "Gesundheit",
+  alltag: "Alltag",
+};
+
+const verwandt = (await getCollection("hilfsmittel"))
+  .filter((e) => e.data.rubrik === entry.data.rubrik && e.id !== entry.id)
+  .slice(0, 6);
+
+const canonicalPath = `/hilfsmittel/${entry.id}/`;
+const stand = entry.data.updated.toLocaleDateString("de-DE", {
+  year: "numeric", month: "long", day: "numeric",
+});
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  headline: entry.data.title,
+  description: entry.data.description,
+  dateModified: entry.data.updated.toISOString().slice(0, 10),
+  inLanguage: "de",
+  url: new URL(canonicalPath, site.url).href,
+};
+---
+
+<BaseLayout
+  title={entry.data.title}
+  description={entry.data.description}
+  canonicalPath={canonicalPath}
+  schema={schema}
+>
+  <div class="container-narrow py-10">
+    <Breadcrumbs
+      items={[
+        { label: "Start", href: "/" },
+        { label: "Hilfsmittel", href: "/hilfsmittel/" },
+        { label: RUBRIK[entry.data.rubrik] ?? entry.data.rubrik, href: "/hilfsmittel/" },
+      ]}
+    />
+
+    <h1 class="mt-6 text-3xl font-bold text-ink sm:text-4xl">{entry.data.title}</h1>
+    <p class="mt-4 text-lg text-ink">{entry.data.description}</p>
+    <p class="mt-3 text-sm text-ink/70">
+      Stand: {stand} · Die Produktlinks führen zu Amazon. Kaufen Sie darüber, erhalten wir
+      eine Provision; für Sie ändert sich der Preis nicht.
+    </p>
+
+    <div class="prose-hx mt-8">
+      <Content />
+    </div>
+
+    {verwandt.length > 0 && (
+      <section class="mt-12 border-t border-ink pt-8">
+        <h2 class="text-2xl font-bold text-ink">Weitere Übersichten: {RUBRIK[entry.data.rubrik]}</h2>
+        <ul class="mt-4 grid gap-2 sm:grid-cols-2">
+          {verwandt.map((e) => (
+            <li>
+              <a href={`/hilfsmittel/${e.id}/`} class="block border border-ink px-4 py-3 text-ink hover:bg-yellow">
+                {e.data.title}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </div>
+</BaseLayout>
