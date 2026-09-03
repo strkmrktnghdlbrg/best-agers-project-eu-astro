@@ -523,4 +523,4 @@ reihenfolge: 15
 </tbody>
 </table>
 </div>
-Dieser Roundup wird von den Lesern unterstützt. Wenn Sie auf Links klicken, können wir eine Empfehlungsprovision für qualifizierte Käufe verdienen.</div>
+Diese Übersicht finanziert sich über Provisionen: Wenn Sie über einen Link kaufen, erhalten wir eine Provision. Für Sie ändert sich der Preis dadurch nicht.</div>
