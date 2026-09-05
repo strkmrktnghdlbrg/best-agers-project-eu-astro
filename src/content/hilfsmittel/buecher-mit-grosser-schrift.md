@@ -8,10 +8,10 @@ roundupId: 70023
 reihenfolge: 15
 ---
 <div>
-      <p>Sie suchen Bücher, die das Lesen entspannter und angenehmer machen? Große Schrift reduziert Augenbelastung, erleichtert längere Lesesessions und ist ideal zum Vorlesen oder Verschenken.</p>
+<p>Sie suchen Bücher, die das Lesen entspannter und angenehmer machen? Große Schrift reduziert Augenbelastung, erleichtert längere Lesesessions und ist ideal zum Vorlesen oder Verschenken.</p>
 <p>In dieser Auswahl finden Sie Romane und Kurzgeschichten, die nicht nur gut lesbar sind, sondern auch inhaltlich auf ältere Leserinnen und Leser sowie Menschen mit Sehschwäche abgestimmt sind.</p>
 
-      <h2>Top-Empfehlungen</h2>
+<h2>Top-Empfehlungen</h2>
 <div class="tableWrapper"><table style="min-width: 50px;">
 <colgroup>
 <col style="min-width: 25px;">
@@ -57,30 +57,30 @@ reihenfolge: 15
 </tbody>
 </table></div>
       
-      <h2>Auswahlkriterien</h2>
+<h2>Auswahlkriterien</h2>
 <p>Bei der Auswahl haben wir auf mehrere zentrale Punkte geachtet, die für Ihre Lesezufriedenheit entscheidend sind. Im Fokus standen <b>Schriftgröße und Layout</b>, damit Texte tatsächlich leichter zu lesen sind. Ebenso wichtig waren <b>Inhaltliche Eignung</b> für ältere Leser, Druckqualität und Seitenumfang, damit die Bücher handlich bleiben. Bewertungen, Erscheinungsdatum und das Preis-Leistungs-Verhältnis flossen zudem in die Bewertung ein, damit Sie ein nachvollziehbares und nützliches Ergebnis erhalten.</p>
 
-          <div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
-      <div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
-        <p>
-          <a href="https://www.amazon.de/Liebe-Schwester-Roman-dtv-gro%C3%9Fdruck/dp/3423252359?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
-            <img src="https://m.media-amazon.com/images/I/714bUX5LbXL.jpg" alt="Liebe Schwester" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
-          </a>
-        </p>
-      </div>
-      <div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
-        <h3><strong>Liebe Schwester</strong></h3>
-        <p>Roman in dtv-Großdruckausgabe, 352 Seiten, deutsch; erschien 2005. Gut lesbare Großschrift und solide Bindung.</p>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <p>
-            <span style="color: rgb(4, 120, 87)"><strong></strong></span>
-          </p>
-          <p>
-            <a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Liebe-Schwester-Roman-dtv-gro%C3%9Fdruck/dp/3423252359?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-          </p>
-        </div>
-      </div>
-    </div>
+<div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
+<div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
+<p>
+<a href="https://www.amazon.de/Liebe-Schwester-Roman-dtv-gro%C3%9Fdruck/dp/3423252359?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
+<img src="https://m.media-amazon.com/images/I/714bUX5LbXL.jpg" alt="Liebe Schwester" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
+</a>
+</p>
+</div>
+<div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
+<h3><strong>Liebe Schwester</strong></h3>
+<p>Roman in dtv-Großdruckausgabe, 352 Seiten, deutsch; erschien 2005. Gut lesbare Großschrift und solide Bindung.</p>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+<p>
+<span style="color: rgb(4, 120, 87)"><strong></strong></span>
+</p>
+<p>
+<a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Liebe-Schwester-Roman-dtv-gro%C3%9Fdruck/dp/3423252359?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
+</p>
+</div>
+</div>
+</div>
 
 <p>Dieser einfühlsame Roman von Renate Welsh erzählt von Figuren und Lebenssituationen, die nahegehen, ohne belehrend zu wirken. Die Großdruckausgabe macht das Lesen für längere Sitzungen deutlich entspannter, egal ob Sie alleine schmökern oder laut vorlesen möchten. Inhaltlich verbindet das Buch Persönliches mit zeitgeschichtlichen Elementen und bietet sowohl ruhige Momente als auch emotionale Tiefe.</p>
 <p>Für gemütliche Lesestunden, den Austausch im Buchkreis oder als Geschenk für ältere Angehörige ist das Buch eine solide Wahl.</p>
@@ -129,27 +129,27 @@ reihenfolge: 15
 <li>Handliches Format für längere Lesesitzungen</li>
 </ul>
 <a href="https://www.amazon.de/Liebe-Schwester-Roman-dtv-gro%C3%9Fdruck/dp/3423252359?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="buy-now-link" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-    <div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
-      <div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
-        <p>
-          <a href="https://www.amazon.de/noch-Mondlandung-Schwarzwei%C3%9F-TV-schauten-Kurzgeschichten/dp/B0H3ZS4XP3?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
-            <img src="https://m.media-amazon.com/images/I/71mEd5P7XOL.jpg" alt="Mondlandung Kurzgeschichten" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
-          </a>
-        </p>
-      </div>
-      <div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
-        <h3><strong>Mondlandung Kurzgeschichten</strong></h3>
-        <p>Nostalgische Kurzgeschichten in Großschrift aus der Reihe "Geschichten, die bleiben"; Band 1, ideal zum Vorlesen und gemeinsamen Erinnern.</p>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <p>
-            <span style="color: rgb(4, 120, 87)"><strong></strong></span>
-          </p>
-          <p>
-            <a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/noch-Mondlandung-Schwarzwei%C3%9F-TV-schauten-Kurzgeschichten/dp/B0H3ZS4XP3?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-          </p>
-        </div>
-      </div>
-    </div>
+<div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
+<div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
+<p>
+<a href="https://www.amazon.de/noch-Mondlandung-Schwarzwei%C3%9F-TV-schauten-Kurzgeschichten/dp/B0H3ZS4XP3?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
+<img src="https://m.media-amazon.com/images/I/71mEd5P7XOL.jpg" alt="Mondlandung Kurzgeschichten" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
+</a>
+</p>
+</div>
+<div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
+<h3><strong>Mondlandung Kurzgeschichten</strong></h3>
+<p>Nostalgische Kurzgeschichten in Großschrift aus der Reihe "Geschichten, die bleiben"; Band 1, ideal zum Vorlesen und gemeinsamen Erinnern.</p>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+<p>
+<span style="color: rgb(4, 120, 87)"><strong></strong></span>
+</p>
+<p>
+<a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/noch-Mondlandung-Schwarzwei%C3%9F-TV-schauten-Kurzgeschichten/dp/B0H3ZS4XP3?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
+</p>
+</div>
+</div>
+</div>
 
 <p>Dieses Buch sammelt kurze, leicht zugängliche Erzählungen, die Erinnerungen an vergangene Zeiten wachrufen. Dank der Großschrift lesen Sie ohne Anstrengung längere Abschnitte, und die Geschichten eignen sich gut für kurze Lesepausen im Alltag oder für gemeinsame Vorlesestunden mit der Familie.</p>
 <p>Für besondere Anlässe wie Geburtstagsrunden, Kaffeetreffen oder Therapiegruppen bietet das Buch Gesprächsstoff und vertraute Motive, die zum Erzählen einladen. Wenn Sie nach einer warmherzigen, handlichen Sammlung suchen, die sowohl alleine als auch gemeinsam Freude macht, ist dieses Band eine schöne Wahl.</p>
@@ -193,27 +193,27 @@ reihenfolge: 15
 <li>Handliches Format für unterwegs</li>
 </ul>
 <a href="https://www.amazon.de/noch-Mondlandung-Schwarzwei%C3%9F-TV-schauten-Kurzgeschichten/dp/B0H3ZS4XP3?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="buy-now-link" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-    <div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
-      <div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
-        <p>
-          <a href="https://www.amazon.de/Sch%C3%B6ne-Kurzgeschichten-Senioren-Gro%C3%9Fdruck-Herzerw%C3%A4rmende/dp/B0FRSNZFDJ?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
-            <img src="https://m.media-amazon.com/images/I/71IRLMjxP+L.jpg" alt="Schöne Kurzgeschichten" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
-          </a>
-        </p>
-      </div>
-      <div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
-        <h3><strong>Schöne Kurzgeschichten</strong></h3>
-        <p>Herzerwärmende Kurzgeschichten in Großdruck für Senioren und Menschen mit Sehschwäche; 310 Seiten, deutsch.</p>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <p>
-            <span style="color: rgb(4, 120, 87)"><strong></strong></span>
-          </p>
-          <p>
-            <a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Sch%C3%B6ne-Kurzgeschichten-Senioren-Gro%C3%9Fdruck-Herzerw%C3%A4rmende/dp/B0FRSNZFDJ?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-          </p>
-        </div>
-      </div>
-    </div>
+<div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
+<div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
+<p>
+<a href="https://www.amazon.de/Sch%C3%B6ne-Kurzgeschichten-Senioren-Gro%C3%9Fdruck-Herzerw%C3%A4rmende/dp/B0FRSNZFDJ?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
+<img src="https://m.media-amazon.com/images/I/71IRLMjxP+L.jpg" alt="Schöne Kurzgeschichten" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
+</a>
+</p>
+</div>
+<div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
+<h3><strong>Schöne Kurzgeschichten</strong></h3>
+<p>Herzerwärmende Kurzgeschichten in Großdruck für Senioren und Menschen mit Sehschwäche; 310 Seiten, deutsch.</p>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+<p>
+<span style="color: rgb(4, 120, 87)"><strong></strong></span>
+</p>
+<p>
+<a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Sch%C3%B6ne-Kurzgeschichten-Senioren-Gro%C3%9Fdruck-Herzerw%C3%A4rmende/dp/B0FRSNZFDJ?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
+</p>
+</div>
+</div>
+</div>
 
 <p>Diese Sammlung bringt kurze, zugängliche Erzählungen zusammen, die sich gut für entspannte Lesestunden eignen. Die Großschrift macht längeres Lesen angenehmer und erleichtert das laute Vorlesen in der Runde.</p>
 <p>Im Alltag passt das Buch zu einer gemütlichen Pause mit Tee, bei Familienbesuchen sorgt es für Gesprächsstoff, und als Geschenk ist es eine unkomplizierte, liebevolle Wahl. Wenn Sie etwas suchen, das sich leicht greifen, teilen und wieder zur Hand nehmen lässt, ist dieses Buch eine praktische und warmherzige Option.</p>
@@ -258,27 +258,27 @@ reihenfolge: 15
 <li>Handliches Format für zuhause und unterwegs</li>
 </ul>
 <a href="https://www.amazon.de/Sch%C3%B6ne-Kurzgeschichten-Senioren-Gro%C3%9Fdruck-Herzerw%C3%A4rmende/dp/B0FRSNZFDJ?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="buy-now-link" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-    <div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
-      <div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
-        <p>
-          <a href="https://www.amazon.de/Krimis-statt-Kaffeeklatsch-Kurzgeschichten-Lesevergn%C3%BCgen/dp/3982874602?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
-            <img src="https://m.media-amazon.com/images/I/71lByPAwQnL.jpg" alt="Krimi Kurzgeschichten" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
-          </a>
-        </p>
-      </div>
-      <div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
-        <h3><strong>Krimi Kurzgeschichten</strong></h3>
-        <p>Kurzkrimis in großer Schrift mit sympathischen Senioren-Ermittlern und kleinen Illustrationen; 180 Seiten, gut lesbar für gemütliche Lesestunden.</p>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <p>
-            <span style="color: rgb(4, 120, 87)"><strong></strong></span>
-          </p>
-          <p>
-            <a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Krimis-statt-Kaffeeklatsch-Kurzgeschichten-Lesevergn%C3%BCgen/dp/3982874602?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-          </p>
-        </div>
-      </div>
-    </div>
+<div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
+<div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
+<p>
+<a href="https://www.amazon.de/Krimis-statt-Kaffeeklatsch-Kurzgeschichten-Lesevergn%C3%BCgen/dp/3982874602?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
+<img src="https://m.media-amazon.com/images/I/71lByPAwQnL.jpg" alt="Krimi Kurzgeschichten" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
+</a>
+</p>
+</div>
+<div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
+<h3><strong>Krimi Kurzgeschichten</strong></h3>
+<p>Kurzkrimis in großer Schrift mit sympathischen Senioren-Ermittlern und kleinen Illustrationen; 180 Seiten, gut lesbar für gemütliche Lesestunden.</p>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+<p>
+<span style="color: rgb(4, 120, 87)"><strong></strong></span>
+</p>
+<p>
+<a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Krimis-statt-Kaffeeklatsch-Kurzgeschichten-Lesevergn%C3%BCgen/dp/3982874602?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
+</p>
+</div>
+</div>
+</div>
 
 <p>Dieses Buch bietet kurze, knackige Kriminalgeschichten, die sich perfekt für kurze Leseeinheiten eignen. Die handlichen, in sich abgeschlossenen Fälle sind so gestaltet, dass Sie leicht einsteigen und nach einer Geschichte wieder aufhören können, ohne den Faden zu verlieren.</p>
 <p>Die Kombination aus Spannung, Humor und warmen Figuren macht das Buch sowohl für den Alltag als auch für besondere Leserunden geeignet. Nimm es mit in die Kaffeepause, lies eine Geschichte vor der Familienrunde oder nutze es als kurzweilige Beschäftigung an ruhigen Abenden; insgesamt eine vergnügliche Begleitung für alle, die gerne rätseln.</p>
@@ -322,27 +322,27 @@ reihenfolge: 15
 <li>Kleine Illustrationen lockern das Layout auf</li>
 </ul>
 <a href="https://www.amazon.de/Krimis-statt-Kaffeeklatsch-Kurzgeschichten-Lesevergn%C3%BCgen/dp/3982874602?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="buy-now-link" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-    <div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
-      <div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
-        <p>
-          <a href="https://www.amazon.de/Wei%C3%9Ft-noch-guten-alten-Zeiten/dp/B0HF4384W4?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
-            <img src="https://m.media-amazon.com/images/I/71CiOhzG7EL.jpg" alt="Weißt du noch" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
-          </a>
-        </p>
-      </div>
-      <div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
-        <h3><strong>Wissen Sie noch</strong></h3>
-        <p>40 nostalgische Kurzgeschichten in Großschrift zum Erinnern, Schmunzeln und Vorlesen; 148 Seiten, deutsch, handliches Format.</p>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <p>
-            <span style="color: rgb(4, 120, 87)"><strong></strong></span>
-          </p>
-          <p>
-            <a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Wei%C3%9Ft-noch-guten-alten-Zeiten/dp/B0HF4384W4?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-          </p>
-        </div>
-      </div>
-    </div>
+<div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
+<div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
+<p>
+<a href="https://www.amazon.de/Wei%C3%9Ft-noch-guten-alten-Zeiten/dp/B0HF4384W4?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
+<img src="https://m.media-amazon.com/images/I/71CiOhzG7EL.jpg" alt="Weißt du noch" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
+</a>
+</p>
+</div>
+<div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
+<h3><strong>Wissen Sie noch</strong></h3>
+<p>40 nostalgische Kurzgeschichten in Großschrift zum Erinnern, Schmunzeln und Vorlesen; 148 Seiten, deutsch, handliches Format.</p>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+<p>
+<span style="color: rgb(4, 120, 87)"><strong></strong></span>
+</p>
+<p>
+<a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Wei%C3%9Ft-noch-guten-alten-Zeiten/dp/B0HF4384W4?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
+</p>
+</div>
+</div>
+</div>
 
 <p>Diese Sammlung bringt 40 kurze, liebevoll erzählte Texte zusammen, die Erinnerungen an frühere Zeiten wecken. Die Großschrift macht das Lesen angenehm und eignet sich sowohl für kurze Lesepausen als auch für längere Vorlesestunden.</p>
 <p>Im Alltag passt das Buch zu einer gemütlichen Tasse Tee, bei Familienbesuchen liefert es Gesprächsstoff, und als Geschenk schafft es gemeinsame Momente. Wenn Sie etwas suchen, das Erinnerungen anregt und leicht zu teilen ist, ist dieses Buch eine sehr passende Wahl.</p>
@@ -387,27 +387,27 @@ reihenfolge: 15
 <li>Nostalgische Themen, die Erinnerungen wecken</li>
 </ul>
 <a href="https://www.amazon.de/Wei%C3%9Ft-noch-guten-alten-Zeiten/dp/B0HF4384W4?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="buy-now-link" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-    <div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
-      <div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
-        <p>
-          <a href="https://www.amazon.de/Kleine-Reisen-f%C3%BCr-Seele-Kurzgeschichten/dp/B0DQNY91FX?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
-            <img src="https://m.media-amazon.com/images/I/61hk+8ZE2PL.jpg" alt="Kleine Reisen" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
-          </a>
-        </p>
-      </div>
-      <div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
-        <h3><strong>Kleine Reisen</strong></h3>
-        <p>Kurzgeschichten in Großdruck für Senioren; Band 1, 124 Seiten, deutsch. Sanfte, herzerwärmende Erzählungen für kurze Lesepausen und gemeinsame Stunden.</p>
-        <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
-          <p>
-            <span style="color: rgb(4, 120, 87)"><strong></strong></span>
-          </p>
-          <p>
-            <a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Kleine-Reisen-f%C3%BCr-Seele-Kurzgeschichten/dp/B0DQNY91FX?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
-          </p>
-        </div>
-      </div>
-    </div>
+<div class="buy-box-roundups" style="display: flex; flex-direction: row; align-items: stretch; border: 1px solid #e5e7eb; border-radius: 12px; overflow: hidden; max-width: 900px; margin: 24px auto; font-family: sans-serif; flex-wrap: wrap;">
+<div style="flex: 0 0 320px; min-width: 280px; max-width: 100%;">
+<p>
+<a href="https://www.amazon.de/Kleine-Reisen-f%C3%BCr-Seele-Kurzgeschichten/dp/B0DQNY91FX?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="">
+<img src="https://m.media-amazon.com/images/I/61hk+8ZE2PL.jpg" alt="Kleine Reisen" style="width: 100%; height: 100% !important; object-fit: contain; display: block; max-height: 270px; margin: 0 !important;" width="70%">
+</a>
+</p>
+</div>
+<div style="flex: 1; padding: 24px; display: flex; flex-direction: column; justify-content: space-between; min-width: 280px;">
+<h3><strong>Kleine Reisen</strong></h3>
+<p>Kurzgeschichten in Großdruck für Senioren; Band 1, 124 Seiten, deutsch. Sanfte, herzerwärmende Erzählungen für kurze Lesepausen und gemeinsame Stunden.</p>
+<div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+<p>
+<span style="color: rgb(4, 120, 87)"><strong></strong></span>
+</p>
+<p>
+<a target="_blank" rel="nofollow sponsored" class="buy-now-link" href="https://www.amazon.de/Kleine-Reisen-f%C3%BCr-Seele-Kurzgeschichten/dp/B0DQNY91FX?tag=best-agers-project.eu-21" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
+</p>
+</div>
+</div>
+</div>
 
 <p>Die Sammlung nimmt Sie mit auf kurze, stimmungsvolle Ausflüge, die sich gut in den Alltag einfügen. Durch die Großschrift lesen Sie längere Abschnitte ohne Anstrengung, was das Buch ideal für entspannte Nachmittage, Besuchsrunden oder die tägliche Lesezeit macht.</p>
 <p>Die Texte sind kurz genug für einzelne Lesepausen, bieten aber genug Tiefe, um Erinnerungen zu wecken oder Gespräche anzustoßen. Wenn Sie nach einer kompakten, warmherzigen Sammlung suchen, die sich leicht mitnimmmen und teilen lässt, passt dieses Buch gut zu Ihnen.</p>
@@ -457,7 +457,7 @@ reihenfolge: 15
 </ul>
 <a href="https://www.amazon.de/Kleine-Reisen-f%C3%BCr-Seele-Kurzgeschichten/dp/B0DQNY91FX?tag=best-agers-project.eu-21" target="_blank" rel="nofollow sponsored" class="buy-now-link" style="margin-bottom: .5rem; margin-top: .5rem; display: flex; height: 2.5rem; align-items: center; justify-content: center; border-radius: 9999px; --tw-bg-opacity: 1; background-color: rgb(249 115 22 / var(--tw-bg-opacity)); font-size: .875rem; line-height: 1.25rem; font-weight: 500; --tw-text-opacity: 1; color: rgb(255 255 255 / var(--tw-text-opacity)); text-decoration-line: none; width: 12rem;">Bestellen</a>
 
-      <h2>Häufige Fragen</h2>
+<h2>Häufige Fragen</h2>
 <h3>Für wen eignen sich Bücher mit großer Schrift?</h3>
 <p>Großschrift-Ausgaben sind ideal, wenn Sie beim Lesen schneller ermüden oder eine Sehschwäche haben, sie sind aber auch praktisch, wenn Sie entspannt und ohne Anstrengung länger schmökern wollen. Kurzgeschichten in Großdruck passen gut zu kurzen Lesepausen oder Vorlesestunden, Romane in Großschrift bieten Ihnen dagegen tieferes Eintauchen in eine Geschichte.</p>
 <p>Wenn Sie für Angehörige suchen, ist die Kombination aus gut lesbarer Schrift und thematischer Nähe oft besonders willkommen.</p>
@@ -469,11 +469,11 @@ reihenfolge: 15
 <p>Denk daran, bei anhaltenden Sehproblemen einen Augenarzt aufzusuchen und zusätzlich auf gutes Licht und regelmäßige Pausen zu achten.</p>
       
 
-      <h2>Zusammenfassung</h2>
-      <p>Großschrift-Bücher machen Lesen wieder zugänglich und angenehm. Wählen Sie nach Ihrem Interesse: Romane für tiefere Geschichten, Kurzgeschichten für kurze Lesepausen und Krimis, wenn Sie Spannung suchen.</p>
+<h2>Zusammenfassung</h2>
+<p>Großschrift-Bücher machen Lesen wieder zugänglich und angenehm. Wählen Sie nach Ihrem Interesse: Romane für tiefere Geschichten, Kurzgeschichten für kurze Lesepausen und Krimis, wenn Sie Spannung suchen.</p>
 <p>Achten Sie auf Schriftbild, Seitenumfang und Druckqualität, dann finden Sie ein Buch, das zu Ihren Lesegewohnheiten und als Geschenk gut passt.</p>
 
-      <div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
+<div style="overflow-x: auto; -webkit-overflow-scrolling: touch;">
 <table class="comparison-table">
 <thead>
 <tr>
